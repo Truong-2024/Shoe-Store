@@ -1,0 +1,622 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Thiết lập menu */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(201, 54, 0); 
+    padding: 30px 8%;
+}
+.navbar {
+    position: fixed; /* Giữ thanh menu cố định ở vị trí trên cùng */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Đảm bảo thanh menu hiển thị trên các phần tử khác */
+}
+
+/* Đảm bảo nội dung dưới thanh menu không bị ẩn khi cuộn trang */
+body {
+    padding-top: 50px; /* Đảm bảo nội dung bắt đầu sau thanh menu */
+}
+
+/* Thiết lập logo */
+nav .logo{
+    font-size: 32px;
+    font-weight: 600;
+    cursor: pointer;
+}
+nav .logo a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+/* Thiết lập menu bên phải */
+
+.right-menu {
+    display: flex;
+    align-items: center;
+}
+
+/* Thiết lập menu */
+.menu {
+    list-style-type: none;
+    display: flex;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* Thiết lập icon và menu con */
+.search, .account, .cart {
+    position: relative;
+}
+
+/* Thiết lập thanh tìm kiếm */
+.search input[type="text"] {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px; /* Điều chỉnh độ rộng của ô tìm kiếm */
+    outline: none;
+}
+
+.search button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px 10px;
+    border: none;
+    background-color: orange; /* Màu cam đỏ cho nút tìm kiếm */
+    color: white;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    outline: none;
+}
+.search input[type="text"] {
+    width: 300px; /* Độ rộng của input */
+    height: 40px; /* Chiều cao của input */
+    font-size: 16px; /* Cỡ chữ của input */
+}
+
+.search button[type="submit"] {
+    height: 40px; /* Chiều cao của button */
+    font-size: 16px; /* Cỡ chữ của button */
+}
+
+/* Thiết lập hover cho nút tìm kiếm */
+.search button:hover {
+    background-color: darkorange; /* Màu cam đậm khi di chuột qua nút tìm kiếm */
+}
+
+/* Thiết lập icon cho nút tìm kiếm */
+.search button i {
+    font-size: 18px;
+}
+
+/* Khoảng cách giữa các phần tử trong thanh menu */
+.search, .account, .cart {
+    margin-left: 20px; /* Khoảng cách 20px giữa các phần tử */
+}
+.cart, .account a i {
+    font-size: 30px; /* Kích thước của biểu tượng người dùng */
+}
+/* tài khoản và giỏ hàng */
+.account a,
+.cart a {
+    display: inline-block;
+    transition: transform 0.3s ease; /* Thời gian và hiệu ứng chuyển đổi */
+}
+
+.account a:hover,
+.cart a:hover {
+    transform: scale(1.3); 
+}
+
+
+/* hiệu ứng khi di chuột vào các thành phần trên menu */
+nav ul li a {
+    position: relative; /* Thêm position relative */
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
+    background-color: black;
+    width: 0;
+    height: 2.5px;
+    transition: width 0.4s ease; /* Thay đổi từ transform sang transition */
+}
+
+nav ul li a:hover::before {
+    width: 100%;
+  
+}
+nav ul i{
+    font-size: 200px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------- */
+.flex-box{
+    background-color:  rgba(185, 185, 185, 0.231);
+    display: flex;
+    width: 1100px;
+    margin: 70px auto;
+    padding: 10PX;
+    border-radius: 5px;
+}
+.left{
+    width: 40%;
+}
+.right{
+    width: 60%;
+}
+.big-img{
+    width: 90%;
+}
+.big-img img{
+    width: inherit;
+    border: 2px solid;
+}
+.images{
+    display: flex;
+    justify-content: space-between;
+    width: 81%;
+    margin-top: 15px;
+}
+.small-img{
+    height: 120px;
+    width: 70px;
+    overflow: hidden;
+}
+.small-img img{
+    width: inherit;
+    cursor: pointer;
+    transition: all 0.3 ease;
+    border: 2px solid;
+}
+.small-img:hover img{
+    transform: scale(1.3);
+}
+.url {
+    font-size: 16px;
+    font-weight:  400;
+    color: rgb(39, 24, 255);
+}
+.pname {
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+.ratings{
+    color: rgb(255, 200, 0);
+    margin-top: 10px;
+}
+.price{
+    font-size: 30px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+.size{
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+.size p {
+    font-size: 18px;
+    font-weight: 600;
+}
+.psize{
+    width: 80px;
+    border: 2px solid;
+    color: #000;
+    text-align: center;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.psize.active{
+    border-width: 1.5px;
+    color: rgb(201, 54, 0);
+    font-weight: 500;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    margin: 0 10px;
+    border: 2px solid;
+}
+
+.decrease,
+.increase {
+    width: 30px;
+    height: 30px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid;
+    font-weight: 600;
+}
+
+.quantity p{
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.bnt-box{
+  
+    display: flex;
+    margin-top: 20px;
+}
+.bnt-box button{
+    font-size: 20px;
+    padding: 8px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+}
+.cart-bnt{
+    background-color: rgb(201, 54, 0);
+    margin-right: 20px;
+}
+.buy-bnt{
+    background-color: rgb(201, 54, 0);
+}
+.cart-bnt:hover , .buy-bnt:hover {
+     background-color: rgb(201, 10, 0)
+}
+   
+
+
+
+.size {
+    margin-bottom: 20px;
+}
+
+.size p {
+    font-weight: bold;
+}
+
+.psize {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.psize.active {
+    background-color: rgb(201, 54, 0);
+    color: #fff;
+}
+
+/* ----------------------css mô tả sản phẩm------------------------ */
+
+.product-info h3{
+    font-size: 30px;
+}
+.product-info {
+    margin: 10px auto;
+    width: 1100px;
+    background-color: #ce555514;
+    padding: 0 5%; 
+    line-height: 3;
+    font-size: 18px;
+    
+}
+
+ .product-info p{
+    margin: 30px;
+ }  
+
+
+.image-container img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    padding: 10px;
+}
+
+
+
+/* -------------------đánh giá----------------- */
+.review h3{
+    font-size: 30px;
+}
+.review {
+
+    width: 1100px;
+    background-color: #b9b9b914;
+    margin: 70px auto; /* Căn giữa khối */ 
+    padding: 10px 5%; /* Thêm lề 2 bên trái phải */
+}
+
+
+.review-item {
+    
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    margin: 40px;
+}
+
+.avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.info {
+    margin-left: 20px;    
+}
+
+.rating {
+    color: #ffd700;
+    font-size: 20px;
+    display: flex;
+}
+
+.star {
+    margin-right: 7px;
+}
+
+.date {
+    font-style: italic;
+}
+
+.star {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.star.selected {
+    color: rgb(255, 174, 0);
+}
+
+.new-review{
+    display: flex;
+    justify-content: center;
+}
+.new-review button{
+    border: 2px solid;
+    height: 40px;
+    width: 150px;
+    font-size: 20px;
+    background-color: orange;
+    font-weight: 500;
+    border-radius: 10px;
+}
+.new-review button:hover{
+    background-color: darkorange;
+
+}
+
+
+.from-review{
+    display: flex;
+    justify-content:center;
+    padding: 30px;
+    margin: 20px;
+}
+.lb-name label{
+    font-size: 18px;
+    
+}
+#lb-email{
+    padding-left: 20px;
+}
+#name{
+    padding: 10px;
+    height: 30px;
+    width: 150px;
+    font-size: 18px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+#email{
+    padding: 10px;
+    height: 30px;
+    width: 300px;
+    font-size: 18px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+#starRating label{
+    font-size: 18px;
+}
+.comment-section {
+    margin-bottom: 20px; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.comment-label {
+    width: 100px; 
+    margin-right: 10px; 
+}
+
+.comment-textarea {
+    flex: 1; 
+}
+.comment-section label{
+    font-size: 18px;
+}
+.anonymous label{
+    font-size: 18px;
+}
+.anonymous input[type="checkbox"] {
+    transform: scale(1.5); /* Điều chỉnh kích thước */
+    margin-right: 5px; /* Tạo khoảng cách giữa checkbox và label */
+}
+
+
+
+
+/* ----------------footer----------------------- */
+
+    .footer {
+        background-color: rgb(201, 54, 0);
+        padding: 50px 0;
+    }
+
+    .footer .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer h4 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .footer p{
+        color: white;
+    }
+    .footer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer ul li a {
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    .footer form {
+        margin-top: 20px;
+    }
+
+    .footer form input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .footer form button {
+        padding: 10px 20px;
+        background-color: orange;
+        color: black;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .footer form button:hover {
+        background-color: darkorange;
+    }
+    .footer .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .footer .col-md-3 {
+        flex: 1; /* Phần tử co dãn để điều chỉnh chiều cao */
+        padding: 0 15px;
+    }
+/* --------------------sản phẩm khác----------------- */
+.new-sp{
+    width: 1100px;
+    
+}
+.product-image img {
+    width: 200px;
+    height: 200px;
+    border: 2px solid;
+}
+.new-sp{
+    background-color: #a7a7a717;
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 20px 5%; 
+}
+.new-sp h3{
+    font-size: 30px;
+}
+.product-image button{ 
+    width: 200px;
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: rgb(201, 54, 0); ;
+    font-size: 18px;
+    color: white;
+}
+.product-image button:hover{
+    background-color: rgb(201, 24, 0); ;
+}
+.product-image{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding-top: 40px ;
+}
+.product .product-image{
+    align-items: center;
+}
+.product{
+    display: flex;
+    justify-content: center;
+}
+.product-image h4 , p{
+padding: 5px;
+}
+
+/* ---------------trở về đầu trang------------------- */
+#backToTopBtn {
+    display: none; 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 99; 
+    background-color: #b9b9b9; 
+    color: black; 
+    border: none; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    padding: 15px; 
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Thêm hiệu ứng transform */
+}
+
+#backToTopBtn:hover {
+    background-color: #fafafa; 
+    transform: scale(1.1); /* Hiệu ứng phóng to khi di chuột qua */
+}
