@@ -67,5 +67,27 @@ function scrollFunction() {
 
 // ------------------------------------------------------------
 
+document.addEventListener('DOMContentLoaded', function() {
+    var buttons = document.querySelectorAll('.psize');
+    
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            buttons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+
+    var buyNowButtons = document.querySelectorAll('.buy-now');
+    
+    buyNowButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            var productLink = button.getAttribute('href');
+            window.location.href = productLink;
+        });
+    });
+});
 
 
