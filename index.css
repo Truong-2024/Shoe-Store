@@ -12,11 +12,22 @@ body{
 }
 
 .container{
-    max-width: 960px;
+    max-width: 1500px;
     margin: 0 auto;
 }
 
-#header{
+header{
+    width: 100%;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all 0.5s ease-in-out;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+header.sticky{
     background-color: rgb(108,87,68);
 }
 
@@ -33,7 +44,7 @@ nav{
 #logo img{
     max-width: 70px;
     height: auto;
-
+    background-size: cover;
 }
 
 #main-menu{
@@ -50,7 +61,7 @@ nav{
 #main-menu li a{
     color: #f8f8f8;
     display: block;
-    padding: 18px 20px;
+    padding: 26px 20px;
     text-decoration: none;
     
 }
@@ -118,7 +129,7 @@ nav{
     position: absolute;
     top: 0;
     right: 0;
-    padding: 18px 0;
+    padding: 26px 0;
 }
 
 #main-menu .sub-menu li:hover>a{
@@ -150,6 +161,39 @@ nav{
 .giohang-dangnhap-dangky a button{
     border-radius: 5px;
     cursor: pointer;
+}
+
+.giohang-dangnhap-dangky a button.login-logout{
+    padding: 7px 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.giohang-dangnhap-dangky a button.login-logout:hover{
+    background-color: rgb(187, 187, 187);
+}
+
+.search-container {
+    /* display: flex; */
+    margin-top: 20px;
+}
+
+.search-container input[type=text] {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.search-container button[type=submit] {
+    padding: 7px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-container button[type=submit]:hover {
+    background-color: rgb(187, 187, 187);
 }
 
 .logo-body{
@@ -270,6 +314,8 @@ ul.products li .product-infor .product-price{
     padding: 2px 0;
     font-weight: 600;
 }
+
+
 
 .footer{
     max-width: 1170px;
