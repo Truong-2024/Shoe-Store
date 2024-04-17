@@ -59,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form">
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-content"><input type="text" name="user_id" placeholder="User Name"></div>
+                        <div class="form-content"><input type="number" placeholder="User ID"></div>
                         <div class="form-content"><input type="text" name="phone" placeholder="Phone"></div>
                         <div class="form-content"><input type="email" name="email" placeholder="Email..."></div>
                         <div class="form-content"><input type="password" name="password" placeholder="Password"></div>
