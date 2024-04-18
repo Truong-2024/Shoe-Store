@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="chitietsanpham.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Thêm Font Awesome -->
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">TRUONGPHAT</a>
+        </div>
+        <div class="right-menu">
+            <ul class="menu">
+                <li><a href="adidas.html">ADIDAS</a></li>
+                <li><a href="nike.html">NIKE</a></li>
+                <li><a href="giaytay.html">GIÀY TÂY</a></li>
+                <li><a href="dep.html">DÉP</a></li>
+                <li><a href="#">GIỚI THIỆU</a></li>
+            </ul>
+            <div class="search">
+                <input type="text" placeholder="Tìm kiếm...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="account">
+                <a href="#"><i class="fas fa-user"></i></a>
+                <div class="account-info">
+                    <!-- Thông tin đăng nhập và đăng ký sẽ hiển thị ở đây -->
+                </div>
+            </div>
+            <div class="cart">
+                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                <!-- Link đến trang giỏ hàng sẽ được chuyển đến khi nhấp vào icon giỏ hàng -->
+            </div>
+        </div>
+    </nav>
+
+    <script src="script.js"></script> 
+<!-- -----------------------------SẢN PHẨM------------------------- -->
+
+    <div class="flex-box">
+        <div class="left">
+            <div class="big-img">
+                <img src="img/1.jpg" alt="">
+            </div>
+            <div class="images">
+                <div class="small-img">
+                    <img src="img/2jpg.jpg" alt="" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                    <img src="img/3.jpg" alt="" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                    <img src="img/4.jpg" alt="" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                    <img src="img/5.jpg" alt="" onclick="showImg(this.src)">
+                </div>
+            </div>
+        </div>
+        
+        <div class="right">
+            <div class="url">TRANG CHỦ \ ADIDAS \ Giày adidas Forum Exhibit Low Off White Shadow Navy </div>
+            <div class="pname">Giày adidas Forum Exhibit Low Off White Shadow Navy </div>
+            <div class="ratings">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price">2.000.000đ</div>
+         
+            <div class="size"> 
+                <p>Kích thước:</p>
+                <div class="psize" style="border: 2px solid;">37</div>
+                <div class="psize" style="border: 2px solid;">39</div>
+                <div class="psize" style="border: 2px solid;">40</div>
+                <div class="psize" style="border: 2px solid;">41</div>
+                <div class="psize" style="border: 2px solid;">38</div>
+              
+            </div>
+              
+            <div class="quantity">
+                <p>Số lượng :</p>
+                <span class="decrease" onclick="decreaseQuantity()">-</span>
+                <input type="text" class="quantity-input" value="1" readonly>
+                <span class="increase" onclick="increaseQuantity()">+</span>
+            </div>
+            
+
+            <div class="bnt-box">
+                <button class="cart-bnt">Thêm vào giỏ hàng</button>
+                <button class="buy-bnt">Mua ngay</button>
+            </div>
+        </div>
+    </div>
+    <!-- ------ -->
+    <script>
+        let bigImg = document.querySelector('.big-img img');
+        let smallImages = document.querySelectorAll('.small-img');
+        let currentIndex = 0;
+        
+        // Hàm để hiển thị hình ảnh
+        function showImg(pic) {
+            bigImg.src = pic;
+        }
+        
+        // Hàm tự động chuyển đổi hình ảnh
+        function autoChangeImage() {
+            currentIndex++;
+            if (currentIndex >= smallImages.length) {
+                currentIndex = 0;
+            }
+            let src = smallImages[currentIndex].querySelector('img').src;
+            showImg(src);
+        }
+        
+        // Thực hiện chuyển đổi tự động sau mỗi khoảng thời gian (ví dụ: sau 3 giây)
+        setInterval(autoChangeImage, 2000);
+    </script>
+
+    <!-- ------------------MÔ TA SẢN PHẨM------------------------------- -->
+    <div class="product-info">
+        <h3>Mô tả sản phẩm</h3>
+        <p>
+            Giày adidas Forum Exhibit Low Off White Shadow Navy hiện đã có sẵn tại TRUONGPHAT , đừng bỏ lỡ cơ hội của mình nhé!
+            <br>
+            Cập nhật nhanh nhất lịch ra mắt của các mẫu giày mới nhất bằng cách theo dõi TRUONGPHAT trên Facebook hoặc Instagram.
+            <br>
+            Thương hiệu: adidas
+            <br>
+            Thiết kế: Forum
+            <br>
+            Mã sản phẩm: GX4121
+            <br>
+            Xuất xứ: Đức
+        </p>
+        <p>
+            adidas Yeezy Boost 350 v2 “Yeshaya”
+            Ngày phát hành : 25 tháng 1 năm 2020
+            Giá chính hãng : 220$
+        </p>
+        <div class="image-container">
+            <img src="img/adidas-Yeezy-Boost-350-v2-Yeshaya.png" alt="">
+        </div>
+    </div>
+    
+<!-- ----------------đánh giá ----------------------- -->
+    <div class="review">        
+        <h3>Đánh giá sản phẩm</h4>
+        <div class="review-item">
+            <div class="avatar"><img src="img/11.jpg" alt="Avatar"></div>
+            <div class="info">
+                <h4>Trần Nhật Trường</h4>
+                <span class="date">Ngày Đánh Giá: 25/04/2024</span>
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9734;</span>
+                </div>
+                <div>
+                    <p>Mọi giá cả trong bài viết này đều đề cập tới giá dự kiến của sản phẩm chính hãng. 
+                        Nếu bạn có nhu cầu muốn mua một đôi giày với chất lượng tương đương và giá tốt 
+                        như tại H&S Sneaker thì vui lòng đợi trong thời gian sắp tới nghe!!!</p>
+                </div>
+            </div>
+        </div>
+        <div class="review-item">
+            <div class="avatar"><img src="img/11.jpg" alt="Avatar"></div>
+            <div class="info">
+                <h4>Trần Nhật Trường</h4>
+                <span class="date">Ngày Đánh Giá: 25/04/2024</span>
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9734;</span>
+                </div>
+                <div>
+                    <p>Mọi giá cả trong bài viết này đều đề cập tới giá dự kiến của sản phẩm chính hãng. 
+                        Nếu bạn có nhu cầu muốn mua một đôi giày với chất lượng tương đương và giá tốt 
+                        như tại H&S Sneaker thì vui lòng đợi trong thời gian sắp tới nghe!!!</p>
+                </div>
+            </div>
+        </div>
+        <div class="new-review">
+            <button id="openReviewForm">Thêm đánh giá</button>
+        </div>
+        <div class="from-review">
+            <form id="reviewForm" action="/submit_review" method="post" style="display: none;">
+                <div class="lb-name">
+                    <label  for="name">Tên của bạn:</label>
+                    <input type="text" id="name" name="name">
+                    <label id="lb-email" for="email">Email của bạn:</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <br>
+        
+                <div id="starRating">
+                    <label for="rating">Đánh giá của bạn:</label>
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <input type="hidden" id="rating" name="rating">
+                </div>    
+                <br>
+                <div id="comment" class="comment-section">
+                    <label for="comment" class="comment-label">Bình luận:</label>
+                    <textarea name="comment" id="commentTextArea" rows="4" cols="50" class="comment-textarea"></textarea>
+                </div>
+                
+                <br>
+                <div class="anonymous">
+                    <input type="checkbox" id="anonymous" name="anonymous" value="anonymous">
+                    <label for="anonymous">Đăng ẩn danh</label>
+                </div>
+                <br>
+                <div class="new-review">
+                    <button id="openReviewForm">Gửi đánh giá</button>
+                </div>
+            </form>
+        </div>
+        
+<!-- ----------------------js---------------------- -->
+        <script>
+            document.getElementById("openReviewForm").addEventListener("click", function() {
+                document.getElementById("reviewForm").style.display = "block";
+            });
+
+            const stars = document.querySelectorAll("#starRating .star");
+            const ratingInput = document.getElementById("rating");
+
+            stars.forEach((star) => {
+                star.addEventListener("click", function() {
+                    const value = this.getAttribute("data-value");
+                    ratingInput.value = value;
+
+                    stars.forEach((s) => {
+                        if (parseInt(s.getAttribute("data-value")) <= parseInt(value)) {
+                            s.classList.add("selected");
+                        } else {
+                            s.classList.remove("selected");
+                        }
+                    });
+                });
+            });
+        </script>
+        
+    </div>
+<!---------------------------------sản phẩm khác--------------------------------------------->
+<div class="new-sp">
+    <h3>Sản phẩm khác</h3>
+    <div class="product">
+        <div class="product-image">
+            <img src="img/1.jpg" alt="Product Image">
+            <h4 class="product-title">Tên Sản Phẩm</h4>
+            <p class="product-price">Giá: $99.99</p>
+            <p class="product-description">Mô tả ngắn về sản phẩm...</p>
+            <button class="btn-buy">Mua Ngay</button>
+        </div>
+        <div class="product-image">
+            <img src="img/1.jpg" alt="Product Image">
+            <h4 class="product-title">Tên Sản Phẩm</h4>
+            <p class="product-price">Giá: $99.99</p>
+            <p class="product-description">Mô tả ngắn về sản phẩm...</p>
+            <button class="btn-buy">Mua Ngay</button>
+        </div>
+        <div class="product-image">
+            <img src="img/1.jpg" alt="Product Image">
+            <h4 class="product-title">Tên Sản Phẩm</h4>
+            <p class="product-price">Giá: $99.99</p>
+            <p class="product-description">Mô tả ngắn về sản phẩm...</p>
+            <button class="btn-buy">Mua Ngay</button>
+        </div>
+        <div class="product-image">
+            <img src="img/1.jpg" alt="Product Image">
+            <h4 class="product-title">Tên Sản Phẩm</h4>
+            <p class="product-price">Giá: $99.99</p>
+            <p class="product-description">Mô tả ngắn về sản phẩm...</p>
+            <button class="btn-buy">Mua Ngay</button>
+        </div>
+    </div>
+    
+</div>
+
+
+   
+    
+<!------------------------------------------footer------------------------------------------->
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>Thông tin</h4>
+                <ul>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">Quy định</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+
+          
+            <div class="col-md-3">
+                <h4>Hỗ trợ</h4>
+                <ul>
+                    <li><a href="#">Trung tâm trợ giúp</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </div> 
+
+            <div class="col-md-3">
+                <h4>Theo dõi chúng tôi</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>        
+              
+            <div class="col-md-3">
+                <h4>Đăng ký nhận tin</h4>
+                <p>Nhận thông tin mới nhất về sản phẩm và khuyến mãi.</p>
+                <form action="#">
+                    <input type="email" placeholder="Nhập email của bạn">
+                    <button type="submit">Đăng ký</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ----------nút cuộn về trang đầu------ -->
+<button onclick="scrollToTop()" id="backToTopBtn" title="Go to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+</body>
+</html>
