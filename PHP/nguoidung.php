@@ -89,7 +89,7 @@ if (isset($_GET['logout'])) {
 
                 <div class="giohang-dangnhap-dangky">
                     <a href="#"><button ><i class="fa-solid fa-cart-shopping"></i></button></a>
-                    <!-- <a href=""><button><i class="fa-solid fa-user"></i></button></a> -->
+                    <a href="#"><button><i class="fa-solid fa-user"></i></button></a>
                     <a href="login.php"><button class="logout">Đăng xuất</button></a>
                     
                   
