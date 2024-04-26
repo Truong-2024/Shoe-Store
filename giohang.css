@@ -87,9 +87,7 @@ nav{
     left: 0;
 }
 
-#main-menu ul.sub-menu li:hover>a{
-    border-bottom: 1px solid red;
-}
+
 
 #main-menu ul.sub-menu li:last-child a{
     border: none;
@@ -98,29 +96,6 @@ nav{
 #main-menu ul.sub-menu ul.sub-menu{
     left: 200px;
     top: -15px;
-}
-
-/*Thiết lập border khi hover*/
-/*before: Lớp giả*/
-
-#main-menu>li>a{
-    position: relative;
-}
-
-#main-menu>li>a::before{
-    content: "";
-    height: 4px;
-    width: 0;
-    background: red;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-#main-menu>li:hover>a::before{
-    width: 100%;
-    
 }
 
 #main-menu>li.has-child::after{
@@ -150,8 +125,6 @@ nav{
 #main-menu .sub-menu>li.has-child:hover::after{
     color: red;
 }
-
-
 
 .giohang-dangnhap-dangky{
     padding: 18px 0;
