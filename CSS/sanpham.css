@@ -1,0 +1,360 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Thiết lập menu */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(201, 54, 0); 
+    padding: 30px 8%;
+}
+.navbar {
+    position: fixed; /* Giữ thanh menu cố định ở vị trí trên cùng */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Đảm bảo thanh menu hiển thị trên các phần tử khác */
+}
+
+/* Đảm bảo nội dung dưới thanh menu không bị ẩn khi cuộn trang */
+body {
+    padding-top: 50px; /* Đảm bảo nội dung bắt đầu sau thanh menu */
+}
+
+/* Thiết lập logo */
+nav .logo{
+    font-size: 32px;
+    font-weight: 600;
+    cursor: pointer;
+}
+nav .logo a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+/* Thiết lập menu bên phải */
+
+.right-menu {
+    display: flex;
+    align-items: center;
+}
+
+/* Thiết lập menu */
+.menu {
+    list-style-type: none;
+    display: flex;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* Thiết lập icon và menu con */
+.search, .account, .cart {
+    position: relative;
+}
+
+/* Thiết lập thanh tìm kiếm */
+.search input[type="text"] {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px; /* Điều chỉnh độ rộng của ô tìm kiếm */
+    outline: none;
+}
+
+.search button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px 10px;
+    border: none;
+    background-color: orange; /* Màu cam đỏ cho nút tìm kiếm */
+    color: white;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    outline: none;
+}
+.search input[type="text"] {
+    width: 300px; /* Độ rộng của input */
+    height: 40px; /* Chiều cao của input */
+    font-size: 16px; /* Cỡ chữ của input */
+}
+
+.search button[type="submit"] {
+    height: 40px; /* Chiều cao của button */
+    font-size: 16px; /* Cỡ chữ của button */
+}
+
+/* Thiết lập hover cho nút tìm kiếm */
+.search button:hover {
+    background-color: darkorange; /* Màu cam đậm khi di chuột qua nút tìm kiếm */
+}
+
+/* Thiết lập icon cho nút tìm kiếm */
+.search button i {
+    font-size: 18px;
+}
+
+/* Khoảng cách giữa các phần tử trong thanh menu */
+.search, .account, .cart {
+    margin-left: 20px; /* Khoảng cách 20px giữa các phần tử */
+}
+.cart a i, .account a i {
+    font-size: 30px; /* Kích thước của biểu tượng người dùng */
+    color: rgb(0, 0, 0);
+}
+/* tài khoản và giỏ hàng */
+.account a,
+.cart a {
+    display: inline-block;
+    transition: transform 0.3s ease; /* Thời gian và hiệu ứng chuyển đổi */
+}
+
+.account a i:hover,
+.cart a i:hover {
+    transform: scale(1.3); 
+    color: darkorange;
+
+}
+
+
+/* hiệu ứng khi di chuột vào các thành phần trên menu */
+nav ul li a {
+    position: relative; /* Thêm position relative */
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    width: 0;
+    height: 2.5px;
+    transition: width 0.4s ease; /* Thay đổi từ transform sang transition */
+}
+
+nav ul li a:hover::before {
+    width: 100%;
+}
+nav ul i{
+    font-size: 200px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------------------------------------- */
+
+.product-image img {
+    width: 200px;
+    height: 230px;
+}
+.new-sp{
+    background-color: #a7a7a717;
+    max-width: 1100px; 
+    margin: 30px auto; 
+    padding: 20px 5%; 
+    border-radius: 10px;
+}
+.new-sp h3{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+.product-image button{ 
+    width: 150px;
+    height: 40px;
+    margin-bottom: 10px;
+    background-color: rgb(201, 54, 0); ;
+    font-size: 18px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.product-image button:hover{
+    background-color: rgb(201, 24, 0); 
+    transform: scale(0.9);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.product-image{
+    flex-basis: 25%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    transform: translateZ(20px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.product-image:hover{
+    transform: translateZ(30px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+.product .product-image{
+    align-items: center;
+}
+.product{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    flex-wrap: wrap;
+    cursor: pointer;
+
+}
+.product-image h4 , p{
+    padding: 5px;
+}
+.product-title{
+    text-align: center;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* ------------phân trang------------------------------------------------------------------------------- */
+.pagination {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 1040px;
+}
+
+.pagination a {
+    color: black;
+    text-decoration: none;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border: 1px solid #ccc;
+}
+
+.pagination a.active {
+    background-color: rgb(201, 54, 0);
+    color: white;
+    border-color:  rgb(201, 54, 0);
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #f1f1f1;
+}
+
+.pagination a.prev, .pagination a.next {
+    background-color: transparent;
+    border: none;
+}
+
+.pagination a.prev:hover, .pagination a.next:hover {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* ----------------footer---------------------------------------------------------------------------------- */
+
+.footer {
+    background-color: rgb(201, 54, 0);
+    padding: 50px 0;
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.footer p{
+    color: white;
+}
+.footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.footer form {
+    margin-top: 20px;
+}
+
+.footer form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.footer form button {
+    padding: 10px 20px;
+    background-color: orange;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.footer form button:hover {
+    background-color: darkorange;
+}
+.footer .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer .col-md-3 {
+    flex: 1; /* Phần tử co dãn để điều chỉnh chiều cao */
+    padding: 0 15px;
+}
+
+/* ---------------trở về đầu trang------------------- */
+#backToTopBtn {
+    display: none; 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 99; 
+    background-color: #b9b9b9; 
+    color: black; 
+    border: none; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    padding: 15px; 
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Thêm hiệu ứng transform */
+}
+
+#backToTopBtn:hover {
+    background-color: #fafafa; 
+    transform: scale(1.1); /* Hiệu ứng phóng to khi di chuột qua */
+}

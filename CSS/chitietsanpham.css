@@ -1,0 +1,87 @@
+@media only screen and (max-width: 600px) {
+    /* CSS áp dụng khi kích thước màn hình nhỏ hơn hoặc bằng 600px */
+    .container {
+        width: 100%;
+    }
+}
+
+.container{
+    display: flex;
+    justify-items: center;
+    padding: 0 200px;
+}
+
+.img img{
+    height: auto;
+    width: 450px;
+}
+.img, .infor_sanpham{
+    margin-right: 10px;
+    width: 100%;
+}
+
+.infor_sanpham div{
+    padding: 8px;
+}
+
+.name_sanpham{
+    font-size: 30px;
+}
+
+.gia{
+    color: orangered;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+button.size_sanpham{
+    padding: 5px 10px;
+    margin-right: 30px;
+    background-color: white;
+    /* border: red; */
+}
+
+button.size_sanpham:hover{
+    color: red;
+    border-color: red;
+    cursor: pointer;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+}
+  
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    padding: 5px 0;
+}
+  
+.btn {
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    /* padding: 8px 12px; */
+    outline: none;
+}
+  
+.btn:hover {
+    background-color: #e0e0e0;
+}
+
+.select{
+    display: flex;
+}
+
+.add_giohang{
+    font-size: 16px;
+    border: 1px solid rgb(197, 192, 192);
+    margin: 10px;
+}
+
+.thanhtoan{
+    font-size: 16;
+    border: 1px solid rgb(197, 192, 192);
+}
+
