@@ -1,0 +1,240 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+}
+
+.navbar {
+    position: fixed;
+    width: 18%;
+    height: auto;
+    float: right; 
+    background-color: #333; 
+    color: white; 
+    padding: 10px; 
+}
+
+.home-admin {
+    height: 1000px;
+    width: 80%; 
+    float: left;
+    padding: 10px;
+    margin-left: 20%;
+    background-color: #c4b5b557; 
+    color: #333; 
+}
+.right-menu {
+    display: flex;
+    justify-content: center;
+}
+.menu {
+    list-style-type: none; 
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+.logo a{
+    font-size: 30px;
+    color: brown;
+}
+a:hover{
+    color: rgb(117, 74, 74);
+}
+li{
+   
+    padding: 20px;
+}
+.menu li {
+    border-bottom: 1px solid #ccc; 
+}
+/* ----------------------------------danh mục------------------------------------------------------- */
+.name h1{
+    text-align: center;
+    color: brown;
+    font-size: 40px;
+}
+.name{
+    margin: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid ;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+a {
+    text-decoration: none;
+    color: brown;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/* ------------------------table------------------------------------------------ */
+
+.add-product{
+    display: flex;
+    align-items: center;
+}
+
+
+.formproduct {
+    display: flex; 
+    align-items: center;
+}
+#bnt-add{
+    cursor: pointer;
+    height: 35px;
+    width: 200px;
+    margin-right: 5px;
+    font-size: 18px;
+    font-weight: 900;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    background-color: brown;
+    border: 5px;
+}
+/* Khi input được focus, thay đổi độ rộng của border-bottom */
+#name-product:focus {
+    border-bottom: 2px solid blue; /* Đổi màu hoặc kích thước của viền bottom */
+}
+
+#name-product{
+    width: 300px;
+    height: 40px;
+    margin-left:5px;
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   border: 1px solid;
+}
+#add{
+    cursor: pointer;
+    width: 100px;
+    height: 33px;
+    margin-left:5px;
+    font-size: 18px;
+    font-weight: 900;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    background-color: brown;
+    text-align: center;
+    align-items: center;
+}
+
+/* -----------------------------------sản phẩm-------------------------------------------------------- */
+/* -----------------------------------sản phẩm-------------------------------------------------------- */
+/* -----------------------------------sản phẩm-------------------------------------------------------- */
+/* -----------------------------------sản phẩm-------------------------------------------------------- */
+/* -----------------------------------sản phẩm-------------------------------------------------------- */
+/* -----------------------------------sản phẩm-------------------------------------------------------- */
+/* -----------------------------------sản phẩm-------------------------------------------------------- */
+/* -----------------------------------sản phẩm-------------------------------------------------------- */
+#bnt-new-product{
+    cursor: pointer;
+    height: 35px;
+    width: 200px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 900;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    background-color: brown;
+    border: 5px;
+}
+#new-text-product{
+    height: 30px;
+    padding-left: 10px;
+    font-size: 18px;
+    margin-right: 10px;
+    margin-top: 10px;
+    border: 1px solid;
+}
+.new-img,.price,#sizeForm label,.describe{
+    font-size: 18px;
+    font-weight: 600;
+}
+#images-upload{
+    font-size: 18px;
+}
+.fr-new-img{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#price{
+    width: 200px;
+    height: 30px;
+    margin-top: 10px;
+    padding-left: 10px;
+    font-size: 18px;
+}
+#sizeForm{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.size-container {
+    display: flex; 
+    align-items: center;
+}
+
+.size-label {
+    margin-right: 10px; 
+}
+
+.size-container label {
+    margin-right: 20px; 
+    
+}
+.size-container input[type="checkbox"] {
+    vertical-align: middle;
+}
+.size-container input[type="checkbox"] {
+    vertical-align: middle; 
+    transform: scale(1.5); 
+    margin-right: 5px; 
+}
+#sizeForm .number{
+    font-size: 18px;
+    display: flex; 
+    align-items: center;
+}
+.describe{
+    margin-bottom: 10px;
+}
+
+textarea{
+    height: 100px;
+}
+#add-new-product{
+    cursor: pointer;
+    height: 35px;
+    width: 200px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    background-color: brown;
+    border: 5px;
+}
+
+
