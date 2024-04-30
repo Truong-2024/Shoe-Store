@@ -65,7 +65,7 @@ if (isset($_GET['logout'])) {
 
                 <div class="search-container">
                     <input type="text" placeholder="Tìm kiếm...">
-                    <button type="submit">Tìm</button>
+                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                 </div>
 
                 <div class="giohang-dangnhap-dangky">
