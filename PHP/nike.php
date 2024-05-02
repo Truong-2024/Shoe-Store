@@ -46,66 +46,67 @@
         <a href="#"><h3>GIÀY NIKE</h3></a>
         <div class="product">
             <div class="product-image">
-                <img src="img/1.jpg" alt="Product Image">
-                <h4 class="product-title">Giày adidas Forum Exhibit Low Off White Shadow Navy</h4>
-                <p class="product-price">Giá: $99.99</p>
+                <img src="../Image/GIÀY/NIKE/17.Giày Nike Nam Chính Hãng - PEGASUS TURBO - Xám  JapanSport DM3413-005/nike-pegasus-turbo-dm3413-005-01-jpeg.webp" alt="Product Image">
+                <h4 class="product-title">Giày Nike Nam Chính Hãng PEGASUS TURBO JapanSport</h4>
+                <p class="product-price">Giá: 680.000đ</p> 
                 <button class="btn-buy">Mua Ngay</button>
             </div>
             <div class="product-image">
-                <img src="img/1.jpg" alt="Product Image">
-                <h4 class="product-title">Giày adidas Forum Exhibit Low Off White Shadow Navy</h4>
-                <p class="product-price">Giá: $99.99</p>
+                <img src="../Image/GIÀY/NIKE/10.Giày Nike Nam Chính Hãng - Air Max SYSTM - Màu Đen  JapanSport DM9537-004/dm9537-004-1.webp" alt="Product Image">
+                <h4 class="product-title">Giày Nike Nam Chính Hãng Air Max SYSTM JapanSport </h4>
+                <p class="product-price">Giá: 720.000đ</p>
                 <button class="btn-buy">Mua Ngay</button>
             </div>
             <div class="product-image">
-                <img src="img/1.jpg" alt="Product Image">
-                <h4 class="product-title">Giày adidas Forum Exhibit Low Off White Shadow Navy</h4>
-                <p class="product-price">Giá: $99.99</p>
+                <img src="../Image/GIÀY/NIKE/19.Giày Nike Nam Nữ Chính Hãng - Nike Dunk Mid - Đen  JapanSport FQ8784-100/dunk-mid-mens-shoes-qvrhs8-1-738837f9-0264-4a28-9382-01066189dcaa.webp" alt="Product Image">
+                <h4 class="product-title">Giày Nike Nam Nữ Chính Hãng Nike Dunk Mid</h4>
+                <p class="product-price">Giá: 510.000đ</p>
                 <button class="btn-buy">Mua Ngay</button>
             </div>
             <div class="product-image">
-                <img src="img/1.jpg" alt="Product Image">
-                <h4 class="product-title">Giày adidas Forum Exhibit Low Off White Shadow Navy</h4>
-                <p class="product-price">Giá: $99.99</p>
+                <img src="../Image/GIÀY/NIKE/38.Giày Nike Nữ Chính Hãng - Air Max INTRLK - Hồng  JapanSport DQ2904-600/8a6e9d0b-accf-498a-b52f-dd6397b5397f.webp" alt="Product Image">
+                <h4 class="product-title">Giày Nike Nữ Chính Hãng Air Max INTRLK</h4>
+                <p class="product-price">Giá: 760.000đ</p>
                 <button class="btn-buy">Mua Ngay</button>
             </div>
             <div class="product-image">
-                <img src="img/1.jpg" alt="Product Image">
-                <h4 class="product-title">Giày adidas Forum Exhibit Low Off White Shadow Navy</h4>
-                <p class="product-price">Giá: $99.99</p>
+                <img src="../Image/GIÀY/NIKE/50.Giày Nike Nam Chính Hãng - Air Jordan 1 Mid - ĐỏĐen  JapanSport DQ8426-106/nike-air-jordan-1-mid-dq8426-106-01.webp" alt="Product Image">
+                <h4 class="product-title">Giày Nike Nam Chính Hãng - Air Jordan</h4>
+                <p class="product-price">Giá: 640.000đ</p>
                 <button class="btn-buy">Mua Ngay</button>
             </div>
             <div class="product-image">
-                <img src="img/1.jpg" alt="Product Image">
-                <h4 class="product-title">Giày adidas Forum Exhibit Low Off White Shadow Navy</h4>
-                <p class="product-price">Giá: $99.99</p>
+                <img src="../Image/GIÀY/NIKE/17.Giày Nike Nam Chính Hãng - PEGASUS TURBO - Xám  JapanSport DM3413-005/nike-pegasus-turbo-dm3413-005-01-jpeg.webp" alt="Product Image">
+                <h4 class="product-title">Giày Nike Nam Chính Hãng - PEGASUS TURBO</h4>
+                <p class="product-price">Giá: 820.000đ</p>
                 <button class="btn-buy">Mua Ngay</button>
             </div>
             <div class="product-image">
-                <img src="img/1.jpg" alt="Product Image">
-                <h4 class="product-title">Giày adidas Forum Exhibit Low Off White Shadow Navy</h4>
-                <p class="product-price">Giá: $99.99</p>
+                <img src="../Image/GIÀY/NIKE/14.Giày Nike Nam Nữ Chính Hãng - Air Force 1 LV8 - Xanh  JapanSport FB9035-001/fb9035-001-01.webp" alt="Product Image">
+                <h4 class="product-title">Giày Nike Nam Nữ Chính Hãng Air Force</h4>
+                <p class="product-price">Giá: 630.000đ</p>
                 <button class="btn-buy">Mua Ngay</button>
             </div>
             <div class="product-image">
-                <img src="img/1.jpg" alt="Product Image">
-                <h4 class="product-title">Giày adidas Forum Exhibit Low Off White Shadow Navy</h4>
-                <p class="product-price">Giá: $99.99</p>
+                <img src="../Image/GIÀY/NIKE/31.Giày Nike Nam Nữ Chính Hãng - (GS) Air Max Bolt White Pink - Trắng  JapanSport CW1626-200/cw1626-200-01.webp" alt="Product Image">
+                <h4 class="product-title">Giày Nike Nam Nữ Chính Hãng - (GS) Air Max Bolt</h4>
+                <p class="product-price">Giá: 870.000đ</p>
                 <button class="btn-buy">Mua Ngay</button>
             </div>
+            
         </div>
+
         <!-- ------phân trang--------------- -->
         <div class="pagination">
             <a href="#" class="prev">&laquo;</a>
             <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#" class="next">&raquo;</a>
-        </div>        
-    </div>
+            <a href="nike2.php">2</a>
 
+            <a href="#" class="next">&raquo;</a>
+        </div> 
+    </div>       
+  
+    
 
     <!------------------------------------------footer------------------------------------------->
 
