@@ -12,38 +12,47 @@
 </head>
 <body>
     <div class="wapper">
-        <div id="header">
+    <header>
             <nav class="container">
                 <a href="" id="logo">
                     <img src="../Image/LOGO/Remove-bg.ai_1711328789070.png" alt="">
                 </a>
 
                 <ul id="main-menu">
-                    <li><a href="">Adidas</a></li>
-                    <li><a href="">Nike</a></li>
-                    <li><a href="">Giày tây</a></li>
-                    <li><a href="">Dép</a></li>
-                    <li><a href="">Giới thiệu</a></li>
+                    <li><a href="">Trang chủ</a></li>
+
+                    <li><a href="">Sản phẩm</a>
+                        <ul class="sub-menu">
+                            <li><a href="">Giày</a></li>
+
+                            <li><a href="">Giày tây</a></li>
+
+                            <li><a href="">Dép</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="">Hãng</a>
+                        <ul class="sub-menu">
+                            <li><a href="">NIKE</a></li>
+                            <li><a href="">ADIDAS</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="">Liên hệ</a></li>
                 </ul>
 
                 <div class="search-container">
-                    <input id="search-input" type="text" placeholder="Tìm kiếm...">
-                    <button id="search-button"  type="submit">Tìm</button>
-                    <p id="search-message" style="display: none; color: red;">Không tìm thấy kết quả phù hợp</p>
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                 </div>
-                <!-- Hiển thị kết quả tìm kiếm -->
-                <?php include 'search.php'; ?>
 
                 <div class="giohang-dangnhap-dangky">
                     <a href="#"><button ><i class="fa-solid fa-cart-shopping"></i></button></a>
-                    <!-- <a href=""><button><i class="fa-solid fa-user"></i></button></a> -->
                     <a href="#"><button class="login-logout">Đăng nhập</button></a>
-                    <a href="#"><button class="login-logout">Đăng ký</button></a>                  
+                    <a href="#"><button class="login-logout">Đăng ký</button></a>
                 </div>
-                
-
             </nav>
-        </div>
+        </header>
 
         <div class="logo-body">
             <img src="../Image/LOGO/20240221_SRHDip8f.jpg" alt="">
@@ -970,8 +979,9 @@
 
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/JS/trangchu.js"></script>
+  
+    
+   
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         var loginButton = document.querySelector(".giohang-dangnhap-dangky .login-logout");
@@ -1007,5 +1017,7 @@
    
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../JS/trangchu.js"></script>
 </html>
 
