@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
-    <link rel="stylesheet" href="/CSS/trangchu.css">
+    <link rel="stylesheet" href="../CSS/trangchu.css">
     <link rel="stylesheet" href="/CSS/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -13,7 +13,7 @@
         <header>
             <nav class="container">
                 <a href="" id="logo">
-                    <img src="/Image/LOGO/Remove-bg.ai_1711328789070.png" alt="">
+                    <img src="../Image/LOGO/Remove-bg.ai_1711328789070.png" alt="">
                 </a>
 
                 <ul id="main-menu">
@@ -55,7 +55,7 @@
         </header>
 
         <div class="logo-body">
-            <img src="/Image/LOGO/20240221_SRHDip8f.jpg" alt="">
+            <img src="../Image/LOGO/20240221_SRHDip8f.jpg" alt="">
         </div>
 
         <div id="wp-content">
@@ -70,7 +70,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY/NIKE/17.Giày Nike Nam Chính Hãng - PEGASUS TURBO - Xám  JapanSport DM3413-005/nike-pegasus-turbo-dm3413-005-01-jpeg.webp" alt="">
+                                <img src="../Image/GIÀY/NIKE/17.Giày Nike Nam Chính Hãng - PEGASUS TURBO - Xám  JapanSport DM3413-005/nike-pegasus-turbo-dm3413-005-01-jpeg.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -88,7 +88,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY/NIKE/10.Giày Nike Nam Chính Hãng - Air Max SYSTM - Màu Đen  JapanSport DM9537-004/dm9537-004-1.webp" alt="">
+                                <img src="../Image/GIÀY/NIKE/10.Giày Nike Nam Chính Hãng - Air Max SYSTM - Màu Đen  JapanSport DM9537-004/dm9537-004-1.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -106,7 +106,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY/NIKE/19.Giày Nike Nam Nữ Chính Hãng - Nike Dunk Mid - Đen  JapanSport FQ8784-100/dunk-mid-mens-shoes-qvrhs8-1-738837f9-0264-4a28-9382-01066189dcaa.webp" alt="">
+                                <img src="../Image/GIÀY/NIKE/19.Giày Nike Nam Nữ Chính Hãng - Nike Dunk Mid - Đen  JapanSport FQ8784-100/dunk-mid-mens-shoes-qvrhs8-1-738837f9-0264-4a28-9382-01066189dcaa.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -124,7 +124,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY/NIKE/38.Giày Nike Nữ Chính Hãng - Air Max INTRLK - Hồng  JapanSport DQ2904-600/8a6e9d0b-accf-498a-b52f-dd6397b5397f.webp" alt="">
+                                <img src="../Image/GIÀY/NIKE/38.Giày Nike Nữ Chính Hãng - Air Max INTRLK - Hồng  JapanSport DQ2904-600/8a6e9d0b-accf-498a-b52f-dd6397b5397f.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -142,7 +142,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY/NIKE/50.Giày Nike Nam Chính Hãng - Air Jordan 1 Mid - ĐỏĐen  JapanSport DQ8426-106/nike-air-jordan-1-mid-dq8426-106-01.webp" alt="">
+                                <img src="../Image/GIÀY/NIKE/50.Giày Nike Nam Chính Hãng - Air Jordan 1 Mid - ĐỏĐen  JapanSport DQ8426-106/nike-air-jordan-1-mid-dq8426-106-01.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -160,7 +160,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY/NIKE/17.Giày Nike Nam Chính Hãng - PEGASUS TURBO - Xám  JapanSport DM3413-005/nike-pegasus-turbo-dm3413-005-01-jpeg.webp" alt="">
+                                <img src="../Image/GIÀY/NIKE/17.Giày Nike Nam Chính Hãng - PEGASUS TURBO - Xám  JapanSport DM3413-005/nike-pegasus-turbo-dm3413-005-01-jpeg.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -178,7 +178,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY/NIKE/14.Giày Nike Nam Nữ Chính Hãng - Air Force 1 LV8 - Xanh  JapanSport FB9035-001/fb9035-001-01.webp" alt="">
+                                <img src="../Image/GIÀY/NIKE/14.Giày Nike Nam Nữ Chính Hãng - Air Force 1 LV8 - Xanh  JapanSport FB9035-001/fb9035-001-01.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -196,7 +196,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY/NIKE/31.Giày Nike Nam Nữ Chính Hãng - (GS) Air Max Bolt White Pink - Trắng  JapanSport CW1626-200/cw1626-200-01.webp" alt="">
+                                <img src="../Image/GIÀY/NIKE/31.Giày Nike Nam Nữ Chính Hãng - (GS) Air Max Bolt White Pink - Trắng  JapanSport CW1626-200/cw1626-200-01.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -223,7 +223,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY TÂY/1.GIÀY TÂY NAM ĐÔNG HẢI ÔM CHÂN HIỆN ĐẠI/giay-tay-dong-hai-G01B4-den-1_400x.webp" alt="">
+                                <img src="../Image/GIÀY TÂY/1.GIÀY TÂY NAM ĐÔNG HẢI ÔM CHÂN HIỆN ĐẠI/giay-tay-dong-hai-G01B4-den-1_400x.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -241,7 +241,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY TÂY/New folder (2)/giay-tay-zuciani-GCF42-nau-1_400x.webp" alt="">
+                                <img src="../Image/GIÀY TÂY/New folder (2)/giay-tay-zuciani-GCF42-nau-1_400x.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -258,7 +258,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY TÂY/New folder/giay-tay-dong-hai-G2286-den-1_400x.webp" alt="">
+                                <img src="../Image/GIÀY TÂY/New folder/giay-tay-dong-hai-G2286-den-1_400x.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -275,7 +275,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY TÂY/New folder (3)/giay-tay-dong-hai-G2285-den-1_34617821-63fe-4091-b541-8e1a24e4bfa0_400x.webp" alt="">
+                                <img src="../Image/GIÀY TÂY/New folder (3)/giay-tay-dong-hai-G2285-den-1_34617821-63fe-4091-b541-8e1a24e4bfa0_400x.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -293,7 +293,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY TÂY/New folder (4)/giay-tay-zuciani-GCF35-den-1_400x.webp" alt="">
+                                <img src="../Image/GIÀY TÂY/New folder (4)/giay-tay-zuciani-GCF35-den-1_400x.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -311,7 +311,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY TÂY/New folder (5)/giay-tay-zuciani-GRD39-den-1_400x.webp" alt="">
+                                <img src="../Image/GIÀY TÂY/New folder (5)/giay-tay-zuciani-GRD39-den-1_400x.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -329,7 +329,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY TÂY/New folder (6)/giay-tay-zuciani-GCF41-den-1_400x.webp" alt="">
+                                <img src="../Image/GIÀY TÂY/New folder (6)/giay-tay-zuciani-GCF41-den-1_400x.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -347,7 +347,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/GIÀY TÂY/New folder (7)/giay-tay-zuciani-GCF37-den-1_400x.webp" alt="">
+                                <img src="../Image/GIÀY TÂY/New folder (7)/giay-tay-zuciani-GCF37-den-1_400x.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -373,7 +373,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/DÉP/1.Dép quai ngang - S'cool EVA Slides/zen_0070__2__1c0d063eaf754abc80078606927123c2_master.webp" alt="">
+                                <img src="../Image/DÉP/1.Dép quai ngang - S cool EVA Slides/zen_0082_7a599104f2ab4213aca822193bff8cbc_master.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -391,7 +391,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/DÉP/2.Dép quai ngang - Big boat slides/zen_0005_f352091b09654174a7c5de6e69651eee_master.webp" alt="">
+                                <img src="../Image/DÉP/2.Dép quai ngang - Big boat slides/zen_0005_f352091b09654174a7c5de6e69651eee_master.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -408,7 +408,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/DÉP/3.Dép cá mập - Baby Shark Slides/zen_0711_cf04c524642b44be84840de872596801_master.webp" alt="">
+                                <img src="../Image/DÉP/3.Dép cá mập - Baby Shark Slides/zen_0711_cf04c524642b44be84840de872596801_master.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -425,7 +425,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/DÉP/4.Dép quai ngang - PV Chill slides 6/fefe.webp" alt="">
+                                <img src="../Image/DÉP/4.Dép quai ngang - PV Chill slides 6/fefe.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -443,7 +443,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/DÉP/15.Dép quai ngang - Basic Fabric strap slides 2/zen_0217_020af5ae68134ecc837586dbf06f832d_master.webp" alt="">
+                                <img src="../Image/DÉP/15.Dép quai ngang - Basic Fabric strap slides 2/zen_0217_020af5ae68134ecc837586dbf06f832d_master.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -461,7 +461,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/DÉP/14.Dép quai ngang - Italian bread slides 3/zen_0094_d60a41286ffa48e298b15e9c61511061_master.webp" alt="">
+                                <img src="../Image/DÉP/14.Dép quai ngang - Italian bread slides 3/zen_0094_d60a41286ffa48e298b15e9c61511061_master.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -479,7 +479,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/DÉP/30.Dép quai ngang - Loaf EVA Slides 1/zen03678_3205727d54574c87b77bc0c78db886d6_master.webp" alt="">
+                                <img src="../Image/DÉP/30.Dép quai ngang - Loaf EVA Slides 1/zen03678_3205727d54574c87b77bc0c78db886d6_master.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
@@ -497,7 +497,7 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="/Image/DÉP/9.Dép quai ngang - S'cool Big Rock Slides/zen_0018_ba363ad40c534203b1f9101b546f5166_master.webp" alt="">
+                                <img src="../Image/DÉP/9.Dép quai ngang - S cool Big Rock Slides/zen_0020_e818d8bb3cff40d19be02ece7490912e_master.webp" alt="">
                             </a>
 
                             <a href="" class="buy-now">Mua ngay</a>
