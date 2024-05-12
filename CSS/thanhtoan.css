@@ -1,0 +1,431 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.15;
+    height: 100%;
+    background-color: #f5f5f5f5;
+}
+
+header{
+    min-width: 1200px;
+    background: #ffffff;
+    display: flex;
+    border-bottom: 1px solid #f8f8f8;
+    margin-bottom: 12px;
+    height: 80px;
+    align-items: center;
+}
+
+.logo{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+    font-size: 20px;
+    
+}
+
+.logo a{
+    display: flex;
+    text-decoration: none;
+    font-weight: 500;
+    color: rgb(108,87,68);
+}
+
+.logo a .page-name{
+    margin-left: 15px;
+    padding-left: 15px;
+    border-left: 1px solid rgb(108,87,68);
+}
+
+.wp-content{
+    width: 1200px;
+    margin: 0 auto 70px;
+}
+
+.wp-content1{
+    background: #fff;
+}
+
+.diachinhanhang{
+    padding: 28px 30px 24px;
+}
+
+.name-diachinhanhang{
+    align-items: center;
+    color:rgb(108,87,68);
+    display: flex;
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.name-diachinhanhang h2{
+    color: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    margin: 8px;
+    padding: 0;
+    font-size: 18px;
+}
+
+.wp-content-diachi{
+    align-items: center;
+    display: flex;
+}
+
+.wp-content-diachi .diachi{
+    align-items: center;
+    display: flex;
+    word-break: break-word;
+    font-size: 16px;
+}
+
+.wp-content-diachi .diachi .name-phone{
+    color: #222;
+    font-weight: 700;
+}
+
+.wp-content-diachi .diachi .name-diachi{
+    margin-left: 20px;
+}
+
+button.change-address{
+    color: #4080ee;
+    background: none;
+    border: none;
+    text-transform: capitalize;
+    font-size: inherit;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.wp-content2{
+    margin-top: 12px;
+    background: #fff;
+}
+
+.wp-content2 .wp-content2-heading{
+    align-items: center;
+    display: flex;
+    background: #fff;
+    border-radius: 3px;
+    height: 50px;
+    padding: 24px 30px 0;
+}
+
+.wp-content2 .wp-content2-heading .header{
+    align-items: center;
+    display: flex;
+    color: #bbb;
+    font-size: 14px;
+    height: 30px;
+    width: 100%;
+}
+
+.wp-content2 .wp-content2-heading .header .header-content:first-child{
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.wp-content2 .wp-content2-heading .header .header-content{
+    flex: 1;
+    text-align: center;
+}
+
+.wp-content2 .wp-content2-heading .header .title{
+    flex: 4;
+}
+
+.wp-content2 .wp-content2-heading .header .header-content .sanpham{
+    align-items: center;
+    color: #222;
+    display: flex;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.wp-content2 .wp-content2-heading .header .header-content:last-child{
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.thanhtien{
+    flex: 2;
+}
+
+.wp-content2 .wp-content2-content{
+    background: #fff;
+    position: relative;
+}
+
+.wp-content2 .wp-content2-content .noidungsanpham{
+    padding-bottom: 20px;
+}
+
+.wp-content2 .wp-content2-content .noidungsanpham .content-noidungsanpham{
+    color: #222;
+    display: flex;
+    font-size: 14px;
+    margin: 0 30px;
+    min-height: 55px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wp-content2 .wp-content2-content .noidungsanpham .content-noidungsanpham .chitietsanpham{
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wp-content2 .wp-content2-content .noidungsanpham .content-noidungsanpham .chitietsanpham:first-child{
+    justify-content: flex-start;
+}
+
+.wp-content2 .wp-content2-content .noidungsanpham .content-noidungsanpham .content1-noidungsanpham{
+    flex: 4;
+}
+
+.wp-content2 .wp-content2-content .noidungsanpham .content-noidungsanpham .content1-noidungsanpham img{
+    width: 40px;
+    height: 40px;
+}
+
+.wp-content2 .wp-content2-content .noidungsanpham .content-noidungsanpham .content1-noidungsanpham .title-img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wp-content2 .wp-content2-content .noidungsanpham .content-noidungsanpham .chitietsanpham:last-child{
+    justify-content: flex-end;
+
+}
+
+.wp-content2 .wp-content2-content .noidungsanpham .content-noidungsanpham .content2-noidungsanpham{
+    font-weight: 500;
+}
+
+.underline{
+    background-color: #fafdff;
+    border-bottom: 1px dashed #bbb;
+    display: flex;
+    justify-content: flex-end;
+    min-height: 0;
+    min-width: 0;
+}
+
+.thanhtien{
+    background-color: #fafdff;
+    display: flex;
+    flex-direction: column;
+}
+
+.thanhtien .content-thanhtien{
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.thanhtien .content-thanhtien .title-content-thanhtien{
+    color: #6b6a6a;
+    grid-column-end: 3;
+    grid-column-start: 2;
+}
+
+.thanhtien .content-thanhtien h3{
+    font-size: 14;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+.thanhtien .content-thanhtien .tien{
+    font-weight: 500;
+    font-size: 20px !important;
+    grid-column-end: 4;
+    grid-column-start: 3;
+    height: 40px;
+    min-width: 100px;
+    padding: 0 25px 0 10px;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+}
+
+.wp-content3{
+    margin-bottom: 12px;
+}
+
+.phuongthucthanhtoan{
+    background: #fff;
+    margin-top: 20px;
+}
+
+.phuongthucthanhtoan .content-phuongthucthanhtoan{
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    padding-left: 28px;
+    padding-right: 28px;
+    border-bottom: 1px solid #e7e5e5;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.phuongthucthanhtoan .content-phuongthucthanhtoan .title-phuongthucthanhtoan{
+    color: #222;
+    font-size: 18px;
+}
+
+.phuongthucthanhtoan .content-phuongthucthanhtoan .radio-phuongthucthanhtoan{
+    font-size: 15px;
+}
+
+.phuongthucthanhtoan .content-phuongthucthanhtoan .radio-phuongthucthanhtoan .radiogroup input{
+    align-items: center;
+    display: flex;
+    display: inline-flex;
+    font-weight: 500;
+    justify-content: center;
+    outline: 0;
+    overflow: visible;
+    margin-left: 50px;
+}
+
+.phuongthucthanhtoan .content-phuongthucthanhtoan .radio-phuongthucthanhtoan .radiogroup span{
+    margin-left: 10px;
+}
+
+.cmt-phuongthucthanhtoan{
+    padding: 25px 28px;
+    background: #fff;
+}
+
+.cmt-phuongthucthanhtoan .content-cmt-phuongthucthanhtoan{
+    display: flex;
+    flex-direction: row;
+}
+
+.cmt-phuongthucthanhtoan .content-cmt-phuongthucthanhtoan .content1-cmt-phuongthucthanhtoan{
+    font-size: 14px;
+}
+
+.cmt-phuongthucthanhtoan .content-cmt-phuongthucthanhtoan .content2-cmt-phuongthucthanhtoan{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.dathang{
+    background: #fff;
+    border-top: 1px solid #e7e5e5;
+    display: grid;
+    grid-template-columns: 1fr max-content max-content;
+    grid-template-rows: auto;
+    padding-top: 15px;
+    grid-column-gap: 10px;
+}
+
+h3.content-dathang.CT1{
+    color: #9f9f9f;
+    grid-column-end: 3;
+    grid-column-start: 2;
+}
+
+.CM1{
+    grid-column-end: 12;
+    grid-column-start: 11;
+}
+
+.CT2{
+    grid-column-end: 4;
+    grid-column-start: 3;
+    height: 40px;
+    min-width: 100px;
+    padding: 0 25px 0 10px;
+    justify-content: flex-end;
+}
+
+.content-dathang{
+    align-items: center;
+    display: flex;
+    font-size: 14px;
+}
+
+.CM2{
+    grid-row-end: 13;
+    grid-row-start: 12;
+}
+
+.CM3{
+    grid-row-end: 31;
+    grid-row-start: 30;
+}
+
+.tongtien{
+    color: rgb(108,87,68);
+    font-size: 28px;
+    font-weight: 500;
+    height: 50px;
+}
+
+.last-dathang{
+    grid-column-end: 4;
+    grid-column-start: 1;
+    grid-row-end: 33;
+    grid-row-start: 32;
+    align-items: center;
+    display: flex;
+    margin: 10px 0 0;
+    min-height: 95px;
+    padding: 0 30px;
+    border-top: 1px dashed #bbb
+}
+
+.last-dathang .content-last-dathang{
+    flex: 1;
+    padding: 40px 25px 32px 0;
+}
+
+.last-dathang .content-last-dathang .mota-content-last-dathang:first-child{
+    padding: 0 15px;
+}
+
+.last-dathang .content-last-dathang .mota-content-last-dathang{
+    background-color: #fff;
+    color: #9f9f9f;
+    font-size: 14px;
+}
+
+.last-dathang .btn-dathang{
+    background: rgb(108,87,68);
+    color: #fff;
+    border: none;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    outline: none;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 12px 14px;
+    align-self: center !important;
+    height: 40px;
+    width: 210px;
+    cursor: pointer;
+}
