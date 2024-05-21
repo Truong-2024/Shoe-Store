@@ -1,14 +1,14 @@
 <?php
 session_start();
-require "conn.php"; // kết nối CSDL
+require "conn.php"; // Kết nối CSDL
 
-// Kiểm tra nếu giỏ hàng không tồn tại hoặc rỗng, hiển thị thông báo và kết thúc script
-if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart']) || empty($_SESSION['cart'])) {
-    echo "Giỏ hàng của bạn hiện đang trống.";
+// Kiểm tra giỏ hàng
+if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
+    echo "Giỏ hàng của bạn đang trống.";
     exit();
 }
 
-// Lấy danh sách các sản phẩm đã chọn từ giỏ hàng
+// Lấy danh sách sản phẩm từ giỏ hàng
 $selectedProducts = [];
 if (isset($_POST['selected_products']) && is_array($_POST['selected_products'])) {
     foreach ($_POST['selected_products'] as $maSanPham) {
@@ -21,13 +21,13 @@ if (isset($_POST['selected_products']) && is_array($_POST['selected_products']))
     }
 }
 
+
 // Tính tổng tiền
 $totalPrice = 0;
 foreach ($selectedProducts as $product) {
     $totalPrice += $product['Gia'] * $product['SoLuong'];
 }
 
-// Tính phí vận chuyển dựa trên tổng giá trị của đơn hàng
 if ($totalPrice < 1000) {
     $shippingFee = 30;
 } elseif ($totalPrice < 5000) {
@@ -38,34 +38,73 @@ if ($totalPrice < 1000) {
     $shippingFee = 100;
 }
 
-// Kiểm tra xem có dữ liệu tên và địa chỉ mới được gửi từ form không
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_name_phone']) && isset($_POST['new_address'])) {
-    // Lưu dữ liệu mới vào session
-    $_SESSION['name_phone'] = htmlspecialchars($_POST['new_name_phone'], ENT_QUOTES, 'UTF-8');
-    $_SESSION['address'] = htmlspecialchars($_POST['new_address'], ENT_QUOTES, 'UTF-8');
+// Lấy thông tin mới từ form
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_name']) && isset($_POST['new_phone']) && isset($_POST['new_address'])) {
+    // Tách tên và số điện thoại từ trường new_name
+    $newNamePhone = $_POST['new_name'];
+    list($name, $phoneNumber) = explode(' ', $newNamePhone, 2);
+    // Lưu số điện thoại và địa chỉ giao hàng vào biến
+    $newPhone = $_POST['new_phone'];
+    $newAddress = $_POST['new_address'];
+
+    // Cập nhật lại thông tin trong session
+    $_SESSION['name_phone'] = $newNamePhone;
+    $_SESSION['address'] = $newAddress;
 }
 
 $namePhone = isset($_SESSION['name_phone']) ? $_SESSION['name_phone'] : "Nguyễn Thành Phát (+84) 489316025";
 $address = isset($_SESSION['address']) ? $_SESSION['address'] : "256 Đường Nguyễn Văn Cừ, phường An Hòa, quận Ninh Kiều, thành phố Cần Thơ";
 
-// Đặt hàng khi nhấn nút "Đặt hàng"
+
+// Xử lý đặt hàng khi nhấn nút "Đặt hàng"
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['place_order'])) {
-    // Lưu thông tin đơn hàng vào CSDL
-    foreach ($selectedProducts as $product) {
-        $maSanPham = $product['MaSanPham'];
-        $tenSanPham = $product['TenSanPham'];
-        $gia = $product['Gia'];
-        $soLuong = $product['SoLuong'];
-        $tong = $gia * $soLuong;
-        
-        // Thực hiện truy vấn INSERT vào bảng chitietdonhang
-        $sql = "INSERT INTO chitietdonhang (MaDonHang, MaSanPham, TenSanPham, Gia, SoLuong, Tong) 
-                VALUES ('$maDonHang', '$maSanPham', '$tenSanPham', $gia, $soLuong, $tong)";
-        if ($conn->query($sql) !== TRUE) {
-            echo "Lỗi: " . $sql . "<br>" . $conn->error;
+    $email = "test@example.com"; // Cập nhật email phù hợp
+    $thoiGianDatHang = date("Y-m-d H:i:s");
+    $trangThai = "Đã đặt hàng";
+
+    $sqlDonHang = $conn->prepare("INSERT INTO donhang (HoVaTen, Email, Sdt, DiaChi, ThoiGianDatHang, TrangThai) VALUES (?, ?, ?, ?, ?, ?)");
+    $sqlDonHang->bind_param("ssssss", $namePhone, $email, $phoneNumber, $address, $thoiGianDatHang, $trangThai);
+
+    if ($sqlDonHang->execute()) {
+        $orderID = $conn->insert_id;
+
+        // Vòng lặp foreach để thêm chi tiết đơn hàng
+        $sqlChiTietDonHang = $conn->prepare("INSERT INTO chitietdonhang (MaDonHang, MaSanPham, HinhAnh, TenSanPham, Gia, Size, SoLuong, Tong) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $sqlChiTietDonHang->bind_param("iisdissd", $orderID, $maSanPham, $hinhanh, $tenSanPham, $gia, $size, $soLuong, $tong);
+
+        foreach ($selectedProducts as $product) {
+            $maSanPham = $product['MaSanPham'];
+            $tenSanPham = $product['TenSanPham'];
+            $gia = $product['Gia'];
+            $soLuong = $product['SoLuong'];
+            $tong = $gia * $soLuong;
+            $hinhanh = $product['HinhAnh'];
+            $size = $product['Size'];
+
+            // Thực hiện bind các tham số và thực thi câu lệnh SQL
+            $sqlChiTietDonHang->execute();
         }
+        echo "<script>alert('Đặt hàng thành công!'); window.location.href='xacthucdonhang.php';</script>";
+    } else {
+        echo "Lỗi khi thêm đơn hàng: " . $conn->error;
     }
-    echo "<script>alert('Đặt hàng thành công!');</script>";
+}
+// Sau khi xác nhận đặt hàng
+$_SESSION['order_info'] = [
+    'name' => "Trần Nhật Trường",
+    'phoneNumber' => "0368611471",
+    'address' => "256 Đường Nguyễn Văn Cừ, phường An Hòa, quận Ninh Kiều, thành phố Cần Thơ",
+    'selectedProducts' => [
+        ['TenSanPham' => 'GIÀY TÂY NAM ĐÔNG HẢI ÔM CHÂN HIỆN ĐẠI', 'Gia' => 680000, 'SoLuong' => 1, 'ThanhTien' => 680000]
+    ],
+    'totalPrice' => 680000,
+    'shippingFee' => 30000
+];
+// Lưu thông tin mới từ form khi người dùng thay đổi
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_name_phone']) && isset($_POST['new_address'])) {
+    $_SESSION['order_info']['name'] = htmlspecialchars($_POST['new_name_phone'], ENT_QUOTES, 'UTF-8');
+    $_SESSION['order_info']['phoneNumber'] = htmlspecialchars($_POST['new_phone'], ENT_QUOTES, 'UTF-8');
+    $_SESSION['order_info']['address'] = htmlspecialchars($_POST['new_address'], ENT_QUOTES, 'UTF-8');
 }
 
 ?>
@@ -99,8 +138,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['place_order'])) {
                     </div>   
                     <div class="wp-content-diachi">
                         <div class="diachi">
-                            <div class="name-phone" id="namePhone"><?php echo $namePhone; ?></div>
-                            <div class="name-diachi"><?php echo $address; ?></div>
+                            <div class="name" id="name">Họ và Tên:<?php echo $name; ?></div>
+                            <div class="name" id="phoneNumber">Số Điện Thoại:<?php echo $phoneNumber; ?></div>
+                            <div class="name" id="address">Địa Chỉ:<?php echo $address; ?></div>
                         </div>
                         <button class="change-info" onclick="changeInfo()">Thay đổi</button>
                     </div>
@@ -115,6 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['place_order'])) {
                         </div>
                         <div class="header-content">Đơn giá</div>
                         <div class="header-content">Số lượng</div>
+                        <div class="header-content">Size</div>
                         <div class="header-content thanhtien">Thành tiền</div>
                     </div>
                 </div>
@@ -135,6 +176,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['place_order'])) {
 
                         echo "<div class='chitietsanpham'>{$formattedPrice}</div>";
                         echo "<div class='chitietsanpham'>{$product['SoLuong']}</div>";
+                        echo "<div class='chitietsanpham'>{$product['Size']}</div>"; 
                         echo "<div class='chitietsanpham content2-noidungsanpham'>{$formattedTotalPrice}</div>";
                         echo "</div>";
                         echo "</div>";
@@ -149,7 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['place_order'])) {
                     </div>
                 </div>
             </div>
-            <div class=" wp-content3">
+            <div class="wp-content3">
                 <div class="phuongthucthanhtoan">
                     <div class="content-phuongthucthanhtoan"> 
                         <div class="title-phuongthucthanhtoan"><p>Phương thức thanh toán</p></div>
@@ -191,12 +233,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['place_order'])) {
                         </div>
                         <!-- Form submission to processing page -->
                         <form id="paymentForm" action="xulythanhtoan.php" method="POST">
-                            <!-- Include necessary input fields here -->
-                            <input type="hidden" name="selected_products" value="<?php echo htmlspecialchars(json_encode($_SESSION['cart'])); ?>">
+                            <?php
+                            // Lặp qua các sản phẩm trong giỏ hàng để tạo các trường ẩn
+                            foreach ($selectedProducts as $product) {
+                                echo "<input type='hidden' name='selected_products[]' value='" . htmlspecialchars($product['MaSanPham'], ENT_QUOTES, 'UTF-8') . "'>";
+                                echo "<input type='hidden' name='selected_images[]' value='" . htmlspecialchars($product['HinhAnh'], ENT_QUOTES, 'UTF-8') . "'>"; // Thêm ảnh
+                                echo "<input type='hidden' name='selected_sizes[]' value='" . htmlspecialchars($product['Size'], ENT_QUOTES, 'UTF-8') . "'>"; // Thêm size
+                            }
+                            ?>
+                            <input type="hidden" name="new_name" value="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="new_phone" value="<?php echo htmlspecialchars($phoneNumber, ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="new_address" value="<?php echo htmlspecialchars($address, ENT_QUOTES, 'UTF-8'); ?>">
                             <input type="hidden" name="total_price" value="<?php echo $totalPrice; ?>">
-                            <!-- Other input fields such as name, address, etc. -->
-                            <button class="btn-dathang" type="button" id="placeOrderBtn">Đặt hàng</button>
+                            <input type="hidden" name="shipping_fee" value="<?php echo $shippingFee; ?>">
+                            <button class="btn-dathang" type="submit" name="place_order">Đặt hàng</button>
                         </form>
+
+
                     </div>
                 </div>
             </div>
@@ -204,11 +257,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['place_order'])) {
     </div>
     <?php require "footer.php"; ?>
     <script>
-    // Lưu thông tin mới (tên và địa chỉ) vào localStorage khi thay đổi
     function changeInfo() {
-        const choice = prompt("Chọn 'ten' để thay đổi tên và số điện thoại hoặc 'diachi' để thay đổi địa chỉ:");
+        const choice = prompt("Chọn 'ten' để thay đổi tên, 'sdt' để thay đổi số điện thoại, hoặc 'diachi' để thay đổi địa chỉ:");
         if (choice === 'ten') {
-            changeNameAndPhoneNumber();
+            changeName();
+        } else if (choice === 'sdt') {
+            changePhoneNumber();
         } else if (choice === 'diachi') {
             changeAddress();
         } else {
@@ -216,15 +270,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['place_order'])) {
         }
     }
 
-    function changeNameAndPhoneNumber() {
-        const newNamePhone = prompt("Nhập tên mới và số điện thoại mới (Ví dụ: Trần Nhật 0368611471):");
-        if (newNamePhone !== null && newNamePhone.trim() !== "") {
-            const parts = newNamePhone.split(" ");
-            const newName = parts.shift();
-            const newPhoneNumber = parts.join(" ");
-            localStorage.setItem("userInfo", JSON.stringify({ name: newName, phoneNumber: newPhoneNumber }));
-            const namePhoneElement = document.getElementById("namePhone");
-            namePhoneElement.innerText = newName + " " + newPhoneNumber;
+    function changeName() {
+        const newName = prompt("Nhập tên mới:");
+        if (newName !== null && newName.trim() !== "") {
+            localStorage.setItem("name", newName);
+            document.getElementById("name").innerText = newName;
+        }
+    }
+
+    function changePhoneNumber() {
+        const newPhoneNumber = prompt("Nhập số điện thoại mới:");
+        if (newPhoneNumber !== null && newPhoneNumber.trim() !== "") {
+            localStorage.setItem("phoneNumber", newPhoneNumber);
+            document.getElementById("phoneNumber").innerText = newPhoneNumber;
         }
     }
 
@@ -232,44 +290,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['place_order'])) {
         const newAddress = prompt("Nhập địa chỉ mới:");
         if (newAddress !== null && newAddress.trim() !== "") {
             localStorage.setItem("address", newAddress);
-            const addressElement = document.querySelector(".name-diachi");
-            addressElement.innerText = newAddress;
-            const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-            if (userInfo) {
-                const namePhoneElement = document.getElementById("namePhone");
-                namePhoneElement.innerText = userInfo.name + " " + userInfo.phoneNumber;
-            }
+            document.getElementById("address").innerText = newAddress;
         }
     }
 
     window.onload = function() {
+        const storedName = localStorage.getItem("name");
+        if (storedName) {
+            document.getElementById("name").innerText = storedName;
+        }
+
+        const storedPhoneNumber = localStorage.getItem("phoneNumber");
+        if (storedPhoneNumber) {
+            document.getElementById("phoneNumber").innerText = storedPhoneNumber;
+        }
+
         const storedAddress = localStorage.getItem("address");
         if (storedAddress) {
-            const addressElement = document.querySelector(".name-diachi");
-            addressElement.innerText = storedAddress;
+            document.getElementById("address").innerText = storedAddress;
         }
-
-        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        if (userInfo) {
-            const namePhoneElement = document.getElementById("namePhone");
-            namePhoneElement.innerText = userInfo.name + " " + userInfo.phoneNumber;
-        }
-
-        // Thêm sự kiện "click" cho nút "Đặt hàng"
-        document.getElementById("placeOrderBtn").addEventListener("click", function() {
-            // Thực hiện các xử lý khác nếu cần
-
-            // Chuyển hướng người dùng đến trang xử lý thanh toán
-            redirectToXulythanhtoanPage();
-        });
     };
+    function updateInfoFromLocalStorage() {
+        const storedName = localStorage.getItem("name");
+        if (storedName) {
+            document.getElementById("name").innerText = storedName;
+        }
 
-    function redirectToXulythanhtoanPage() {
-        window.location.href = 'xulythanhtoan.php'; // Thay 'xulythanhtoan.php' bằng đường dẫn tới trang xử lý thanh toán của bạn
+        const storedPhoneNumber = localStorage.getItem("phoneNumber");
+        if (storedPhoneNumber) {
+            document.getElementById("phoneNumber").innerText = storedPhoneNumber;
+        }
+
+        const storedAddress = localStorage.getItem("address");
+        if (storedAddress) {
+            document.getElementById("address").innerText = storedAddress;
+        }
     }
-</script>
 
+    // Hàm để lưu thông tin từ các phần tử HTML vào localStorage
+    function saveInfoToLocalStorage() {
+        const newName = document.getElementById("new_name_phone").value.trim();
+        const newPhoneNumber = document.getElementById("new_phone").value.trim();
+        const newAddress = document.getElementById("new_address").value.trim();
+
+        localStorage.setItem("name", newName);
+        localStorage.setItem("phoneNumber", newPhoneNumber);
+        localStorage.setItem("address", newAddress);
+    }
+
+    // Gọi hàm cập nhật thông tin khi trang được tải
+    window.onload = function() {
+        updateInfoFromLocalStorage();
+    };
+    </script>
 </body>
 </html>
-
-
