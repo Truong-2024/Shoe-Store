@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Completion</title>
+    <link rel="stylesheet" href="../CSS/hoantatdonhang.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Đơn Hàng Thành Công</h1>
+        <p>Cảm ơn bạn đã đặt hàng. Đơn hàng của bạn đã được đặt thành công.</p>
+        <div class="order-details">
+            <h2>Chi Tiết Đơn Hàng</h2>
+            <!-- Đoạn mã PHP để lấy thông tin từ session và hiển thị -->
+            <?php
+            session_start();
+            require "conn.php"; // Kết nối CSDL
+
+            // Truy xuất thông tin từ session
+            $orderID = isset($_SESSION['orderID']) ? $_SESSION['orderID'] : '';
+            $orderDate = isset($_SESSION['orderDate']) ? $_SESSION['orderDate'] : '';
+            $customerName = isset($_SESSION['customerName']) ? $_SESSION['customerName'] : '';
+            $shippingAddress = isset($_SESSION['shippingAddress']) ? $_SESSION['shippingAddress'] : '';
+            $products = isset($_SESSION['products']) ? $_SESSION['products'] : [];
+            $totalPrice = isset($_SESSION['totalPrice']) ? $_SESSION['totalPrice'] : 0;
+
+            // Hiển thị thông tin đơn hàng
+            echo "<p>Mã Đơn Hàng: #$orderID</p>";
+            echo "<p>Ngày Đặt Hàng: $orderDate</p>";
+            echo "<p>Tên Khách Hàng: $customerName</p>";
+            echo "<p>Địa Chỉ Giao Hàng: $shippingAddress</p>";
+            echo "<h3>Sản Phẩm:</h3>";
+            echo "<ul>";
+            foreach ($products as $product) {
+                echo "<li>{$product['name']} - {$product['quantity']} x {$product['price']} VND</li>";
+            }
+            echo "</ul>";
+            echo "<p>Tổng: $totalPrice VND</p>";
+
+            $conn->close();
+            ?>
+            <!-- Kết thúc đoạn mã PHP -->
+        </div>
+        <div class="actions">
+            <button onclick="window.location.href='nguoidung.php'">Tiếp Tục Mua Sắm</button>
+            <button onclick="window.location.href='order_history.html'">Xem Lịch Sử Đơn Hàng</button>
+        </div>
+    </div>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+.order-details {
+    text-align: left;
+    margin: 20px 0;
+}
+
+h2, h3 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 5px 0;
+}
+
+.actions {
+    text-align: center;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
