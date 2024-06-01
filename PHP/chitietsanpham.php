@@ -12,7 +12,6 @@
 <!-- -----------------------------SẢN PHẨM------------------------- -->
 <?php
 require "conn.php";
-
 $product_ids = [];
 for ($i = 1; $i <= 48; $i++) {
     $product_id = 'SP' . str_pad($i, 2, '0', STR_PAD_LEFT);
@@ -91,35 +90,58 @@ if(mysqli_num_rows($result) > 0) {
                 </div>
                 <div class="review">
                     <h3>Đánh giá sản phẩm</h3>
-                    <div class="review-item">
-                        <div class="avatar"><img src="img/11.jpg" alt="Avatar"></div>
-                        <div class="info">
-                            <h4>Trần Nhật Trường</h4>
-                            <span class="date">Ngày Đánh Giá: 25/04/2024</span>
-                            <div class="rating">
-                                <span class="star">&#9733;</span>
-                                <span class="star">&#9733;</span>
-                                <span class="star">&#9733;</span>
-                                <span class="star">&#9733;</span>
-                                <span class="star">&#9734;</span>
+                    <?php
+                    // Truy vấn cơ sở dữ liệu để lấy đánh giá của sản phẩm có ID cụ thể
+                    $productId = $row['MaSanPham']; // Lấy ID sản phẩm hiện tại
+                    $queryReviews = "SELECT * FROM dg WHERE MaSanPham = ?";
+                    $stmtReviews = mysqli_prepare($conn, $queryReviews);
+                    mysqli_stmt_bind_param($stmtReviews, "s", $productId);
+                    mysqli_stmt_execute($stmtReviews);
+                    $resultReviews = mysqli_stmt_get_result($stmtReviews);
+
+                    // Kiểm tra xem có đánh giá nào không
+                    if(mysqli_num_rows($resultReviews) > 0) {
+                        while($rowReview = mysqli_fetch_assoc($resultReviews)) {
+                            // Hiển thị mỗi đánh giá
+                            ?>
+                            <div class="review-item">
+                                <div class="avatar"><img src="img/11.jpg" alt="Avatar"></div>
+                                <div class="info">
+                                    <h4><?php echo $rowReview['TenNguoiDung']; ?></h4>
+                                    <span class="date">Ngày Đánh Giá: <?php echo date('d/m/Y', strtotime($rowReview['NgayDanhGia'])); ?></span>
+                                    <div class="rating">
+                                        <?php
+                                        // Hiển thị số sao dựa trên số sao lưu trong cơ sở dữ liệu
+                                        // Hiển thị số sao dựa trên số sao của từng đánh giá cụ thể
+                                    for($j = 1; $j <= 5; $j++) {
+                                        if($j <= $rowReview['SoSao']) {
+                                            echo '<span class="star" data-value="' . $j . '">&#9733;</span>';
+                                        } else {
+                                            echo '<span class="star" data-value="' . $j . '">&#9734;</span>';
+                                        }
+                                    }
+                                        ?>
+                                    </div>
+                                    <div>
+                                        <p><?php echo $rowReview['BinhLuan']; ?></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <p>Mọi giá cả trong bài viết này đều đề cập tới giá dự kiến của sản phẩm chính hãng. 
-                                    Nếu bạn có nhu cầu muốn mua một đôi giày với chất lượng tương đương và giá tốt 
-                                    như tại H&S Sneaker thì vui lòng đợi trong thời gian sắp tới nghe!!!</p>
-                            </div>
-                        </div>
-                    </div>
+                            <?php
+                        }
+                    }
+                    mysqli_stmt_close($stmtReviews);
+                    ?>
                     <div class="new-review">
                         <button id="openReviewForm">Thêm đánh giá</button>
                     </div>
-                    <div class="from-review">
-                        <form id="reviewForm" action="/submit_review" method="post" style="display: none;">
+                    <div class="from-review" id="reviewFormWrapper" style="display: none;">
+                        <form id="reviewForm" action="submit_review.php" method="post">
                             <div class="lb-name">
-                                <label  for="name">Tên của bạn:</label>
-                                <input type="text" id="name" name="name">
+                                <label for="name">Tên của bạn:</label>
+                                <input type="text" id="name" name="name" required>
                                 <label id="lb-email" for="email">Email của bạn:</label>
-                                <input type="email" id="email" name="email">
+                                <input type="email" id="email" name="email" required>
                             </div>
                             <br>
                             <div id="starRating">
@@ -129,25 +151,27 @@ if(mysqli_num_rows($result) > 0) {
                                 <span class="star" data-value="3">&#9733;</span>
                                 <span class="star" data-value="4">&#9733;</span>
                                 <span class="star" data-value="5">&#9733;</span>
-                                <input type="hidden" id="rating" name="rating">
+                                <input type="hidden" id="rating" name="rating" required>
                             </div>    
                             <br>
                             <div id="comment" class="comment-section">
                                 <label for="comment" class="comment-label">Bình luận:</label>
-                                <textarea name="comment" id="commentTextArea" rows="4" cols="50" class="comment-textarea"></textarea>
+                                <textarea type="text" name="comment" id="commentTextArea" rows="4" cols="50" class="comment-textarea" required></textarea>
                             </div>
                             <br>
                             <div class="anonymous">
-                                <input type="checkbox" id="anonymous" name="anonymous" value="anonymous">
+                                <input type="checkbox" id="anonymous" name="anonymous" value="1">
                                 <label for="anonymous">Đăng ẩn danh</label>
                             </div>
                             <br>
                             <div class="new-review">
-                                <button id="openReviewForm">Gửi đánh giá</button>
+                                <button type="submit">Gửi đánh giá</button>
                             </div>
+                            <input type="hidden" name="product_id" value="<?php echo $row['MaSanPham']; ?>">
                         </form>
                     </div>
                 </div>
+     
                 <div class="new-sp">
                     <h3>Sản phẩm liên quan</h3>
                     <div class="product">
@@ -180,6 +204,7 @@ if(mysqli_num_rows($result) > 0) {
     echo "Không có sản phẩm nào trong danh sách.";
 }
 ?>
+<?php require "footer.php"; ?>
 <!-- -----------------------------SẢN PHẨM------------------------- -->
 
 <script>
@@ -296,6 +321,130 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+document.getElementById('openReviewForm').addEventListener('click', function() {
+    document.getElementById('reviewForm').style.display = 'block';
+});
+
+function addToCart(maSanPham, tenSanPham, gia, hinhAnh) {
+    const soLuong = document.querySelector('.quantity-input').value;
+    const sizeElements = document.querySelectorAll('.psize');
+    let size = null;
+    sizeElements.forEach(el => {
+        if (el.classList.contains('active')) {
+            size = el.textContent;
+        }
+    });
+
+    if (!size) {
+        alert('Vui lòng chọn kích thước');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('MaSanPham', maSanPham);
+    formData.append('TenSanPham', tenSanPham);
+    formData.append('Gia', gia);
+    formData.append('HinhAnh', hinhAnh);
+    formData.append('SoLuong', soLuong);
+    formData.append('Size', size);
+    
+    // Lấy giá trị số sao
+    const rating = document.querySelector('#starRating .star.selected').getAttribute('data-value');
+    // Thêm giá trị số sao vào form
+    formData.append('rating', rating);
+
+    fetch('submit_review.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(result => {
+        if (result.trim() === 'success') {
+            alert('Sản phẩm đã được thêm vào giỏ hàng');
+            // Chuyển hướng người dùng sang trang giỏ hàng
+            window.location.href = 'giohang.php';
+        } else {
+            alert('Đã có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+// review.js
+document.addEventListener('DOMContentLoaded', function() {
+    const stars = document.querySelectorAll('.star');
+
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            const value = parseInt(this.getAttribute('data-value'));
+            const container = this.parentElement;
+
+            // Xác định và cập nhật giá trị rating vào input ẩn trong form
+            container.querySelector('input[type="hidden"]').value = value;
+
+            // Xóa lớp 'selected' của tất cả các ngôi sao trong container
+            container.querySelectorAll('.star').forEach(s => s.classList.remove('selected'));
+
+            // Thêm lớp 'selected' cho các ngôi sao có index nhỏ hơn hoặc bằng value
+            for (let i = 0; i < value; i++) {
+                container.querySelectorAll('.star')[i].classList.add('selected');
+            }
+        });
+    });
+
+    // Thiết lập lắng nghe sự kiện submit của form đánh giá
+    document.getElementById('reviewForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn chặn form gửi đi mặc định
+        
+        // Gửi dữ liệu form bằng AJAX
+        var formData = new FormData(this);
+        fetch('submit_review.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.status === 'success') {
+                // Thêm đánh giá mới vào danh sách đánh giá mà không cần tải lại trang
+                const newReview = document.createElement('div');
+                newReview.classList.add('review-item');
+                newReview.innerHTML = `
+                    <div class="avatar"><img src="img/11.jpg" alt="Avatar"></div>
+                    <div class="info">
+                        <h4>${formData.get('name')}</h4>
+                        <span class="date">Ngày Đánh Giá: ${new Date().toLocaleDateString()}</span>
+                        <div class="rating">
+                            ${'&#9733;'.repeat(formData.get('rating'))}${'&#9734;'.repeat(5 - formData.get('rating'))}
+                        </div>
+                        <p>${formData.get('comment')}</p>
+                    </div>
+                `;
+                document.querySelector('.review').insertBefore(newReview, document.querySelector('.new-review'));
+
+                // Ẩn form đánh giá và làm trống các trường
+                document.getElementById('reviewForm').style.display = 'none';
+                document.getElementById('reviewForm').reset();
+
+                // Hiển thị thông báo thành công
+                alert(result.message);
+            } else {
+                // Hiển thị thông báo lỗi
+                alert('Lỗi: ' + result.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Đã xảy ra lỗi khi gửi đánh giá của bạn. Vui lòng thử lại sau.');
+        });
+    });
+
+    // Hiển thị form đánh giá khi bấm vào nút "Thêm đánh giá"
+    document.getElementById('openReviewForm').addEventListener('click', function() {
+        document.getElementById('reviewFormWrapper').style.display = 'block';
+    });
+});
+
 </script>
 </body>
 </html>
