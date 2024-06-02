@@ -6,9 +6,24 @@ if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart']) || empty($_SESSION
     echo "Giỏ hàng của bạn hiện đang trống.";
     exit();
 }
+
 // Lưu thông tin sản phẩm vào biến session
-$_SESSION['selected_products'] = $_SESSION['cart'];
+$_SESSION['selected_products'] = array();
+
+foreach ($_SESSION['cart'] as $product) {
+    // Tạo key duy nhất cho sản phẩm dựa trên mã sản phẩm và size
+    $key = $product['MaSanPham'] . '_' . $product['Size'];
+    // Kiểm tra xem sản phẩm đã tồn tại trong session chưa
+    if (isset($_SESSION['selected_products'][$key])) {
+        // Nếu sản phẩm đã tồn tại, cập nhật số lượng
+        $_SESSION['selected_products'][$key]['SoLuong'] += $product['SoLuong'];
+    } else {
+        // Nếu sản phẩm chưa tồn tại, thêm mới vào session
+        $_SESSION['selected_products'][$key] = $product;
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -91,46 +106,63 @@ $_SESSION['selected_products'] = $_SESSION['cart'];
             });
         }
 
-        function updateQuantity(maSanPham, change) {
-            const row = document.querySelector(`#product-${maSanPham}`);
-            if (!row) {
-                console.log("Row not found for maSanPham:", maSanPham);
-                return;
-            }
-            const quantityElement = row.querySelector(".quantity");
-            let quantity = parseInt(quantityElement.innerText) + change;
+        function updateQuantity(maSanPham, size, change) {
+    const row = document.querySelector(`#product-${maSanPham}-${size}`);
+    if (!row) {
+        console.log("Row not found for maSanPham:", maSanPham);
+        return;
+    }
+    const quantityElement = row.querySelector(".quantity");
+    let quantity = parseInt(quantityElement.innerText) + change;
 
-            if (quantity < 1) quantity = 1;
+    if (quantity < 1) quantity = 1;
 
-            // Cập nhật số lượng trên giao diện
-            quantityElement.innerText = quantity;
+    // Cập nhật số lượng trên giao diện
+    quantityElement.innerText = quantity;
 
-            const priceElement = row.querySelector(".price");
-            const price = priceElement ? parseFloat(priceElement.innerText.replace("đ", "").replace(/\./g, "").replace(",", ".")) : 0;
-            const totalElement = row.querySelector(".total-price");
-            const total = price * quantity;
-            totalElement.innerText = formatCurrency(total);
+    const priceElement = row.querySelector(".price");
+    const price = priceElement ? parseFloat(priceElement.innerText.replace("đ", "").replace(/\./g, "").replace(",", ".")) : 0;
+    const totalElement = row.querySelector(".total-price");
+    const total = price * quantity;
+    totalElement.innerText = formatCurrency(total);
 
-            // Gửi yêu cầu AJAX để cập nhật số lượng trong session
-            fetch('update_cart_quantity.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'MaSanPham=' + encodeURIComponent(maSanPham) + '&SoLuong=' + encodeURIComponent(quantity),
-            })
-            .then(response => response.text())
-            .then(result => {
-                if (result.trim() === 'success') {
-                    updateSummary();
-                } else {
-                    console.error('Error updating quantity:', result);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+    // Lấy thông tin giỏ hàng từ localStorage
+    const cart = getCartFromLocalStorage();
+
+    // Tạo key duy nhất cho sản phẩm dựa trên mã sản phẩm và size
+    const key = maSanPham + '_' + size;
+
+    // Kiểm tra xem đối tượng cart và thuộc tính SoLuong đã được định nghĩa hay chưa
+    if (!cart.hasOwnProperty(key)) {
+        cart[key] = {}; // Nếu chưa, khởi tạo thuộc tính SoLuong
+    }
+
+    // Gán giá trị cho thuộc tính SoLuong
+    cart[key].SoLuong = quantity;
+
+    // Lưu thông tin giỏ hàng vào localStorage
+    saveCartToLocalStorage(cart);
+
+    // Gửi yêu cầu AJAX để cập nhật số lượng trong session
+    fetch('update_cart_quantity.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'MaSanPham=' + encodeURIComponent(maSanPham) + '&Size=' + encodeURIComponent(size) + '&SoLuong=' + encodeURIComponent(quantity),
+    })
+    .then(response => response.text())
+    .then(result => {
+        if (result.trim() === 'success') {
+            updateSummary();
+        } else {
+            console.error('Error updating quantity:', result);
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 
 
         function updateCartIconQuantity() {
@@ -213,7 +245,84 @@ $_SESSION['selected_products'] = $_SESSION['cart'];
         console.error('Error:', error);
     });
 }
-   
+function removeFromCart(key) {
+    const [maSanPham, size] = key.split('_');
+    fetch(SERVER_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'MaSanPham=' + encodeURIComponent(maSanPham) + '&Size=' + encodeURIComponent(size),
+    })
+    .then(response => response.text())
+    .then(result => {
+        if (result.trim() === 'success') {
+            alert('Sản phẩm đã được xóa khỏi giỏ hàng');
+            location.reload();
+        } else {
+            alert('Đã có lỗi xảy ra khi xóa sản phẩm khỏi giỏ hàng');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+function updateQuantity(key, change) {
+    const [maSanPham, size] = key.split('_');
+    const row = document.querySelector(`#product-${maSanPham}-${size}`);
+    if (!row) {
+        console.log("Row not found for key:", key);
+        return;
+    }
+    const quantityElement = row.querySelector(".quantity");
+    let quantity = parseInt(quantityElement.innerText) + change;
+
+    if (quantity < 1) quantity = 1;
+
+    // Cập nhật số lượng trên giao diện
+    quantityElement.innerText = quantity;
+
+    const priceElement = row.querySelector(".price");
+    const price = priceElement ? parseFloat(priceElement.innerText.replace("đ", "").replace(/\./g, "").replace(",", ".")) : 0;
+    const totalElement = row.querySelector(".total-price");
+    const total = price * quantity;
+    totalElement.innerText = formatCurrency(total);
+
+    // Lấy thông tin giỏ hàng từ localStorage
+    const cart = getCartFromLocalStorage();
+
+    // Kiểm tra xem đối tượng cart và thuộc tính SoLuong đã được định nghĩa hay chưa
+    if (!cart.hasOwnProperty(key)) {
+        cart[key] = {}; // Nếu chưa, khởi tạo thuộc tính SoLuong
+    }
+
+    // Gán giá trị cho thuộc tính SoLuong
+    cart[key].SoLuong = quantity;
+
+    // Lưu thông tin giỏ hàng vào localStorage
+    saveCartToLocalStorage(cart);
+
+    // Gửi yêu cầu AJAX để cập nhật số lượng trong session
+    fetch('update_cart_quantity.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'MaSanPham=' + encodeURIComponent(maSanPham) + '&Size=' + encodeURIComponent(size) + '&SoLuong=' + encodeURIComponent(quantity),
+    })
+    .then(response => response.text())
+    .then(result => {
+        if (result.trim() === 'success') {
+            updateSummary();
+        } else {
+            console.error('Error updating quantity:', result);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
     </script>
 </head>
 <body>
@@ -279,32 +388,29 @@ $_SESSION['selected_products'] = $_SESSION['cart'];
                                 </thead>
                                 <tbody>
                                 <?php
-                                    foreach ($_SESSION['cart'] as $product) {
-                                        if (isset($product['MaSanPham'])) {
-                                            $product['Gia'] = str_replace(".", "", $product['Gia']);
-                                            $formattedPrice = number_format($product['Gia'], 0, '.', '.') . "đ";
-                                            $thanhTien = $product['SoLuong'] * $product['Gia'];
-                                            $formattedTotalPrice = number_format($thanhTien, 0, '.', '.') . "đ";
+                                    foreach ($_SESSION['selected_products'] as $key => $product) {
+                                        $gia = floatval(str_replace(".", "", $product['Gia'])); // Chuyển giá thành số thực
+                                        $soLuong = intval($product['SoLuong']); // Chuyển số lượng thành số nguyên
+                                        $formattedPrice = number_format($product['Gia'], 0, '.', '.') . "đ";
+                                        $thanhTien = $soLuong * $gia; // Thực hiện phép nhân giữa số lượng và giá;
+                                        $formattedTotalPrice = number_format($thanhTien, 0, '.', '.') . "đ";
                                     
-                                            echo "<tr id='product-{$product['MaSanPham']}'>";
-                                            echo "<td><input type='checkbox' name='selected_products[]' value='{$product['MaSanPham']}'></td>";
-                                            echo "<td><img src='{$product['HinhAnh']}' alt='{$product['TenSanPham']}' class='product-image'></td>";
-                                            echo "<td>{$product['TenSanPham']}</td>";
-                                            echo "<td>{$product['Size']}</td>";
-                                            echo "<td class='quantity-container'>
-                                                    <button type='button' onclick='updateQuantity(\"{$product['MaSanPham']}\", -1)'>-</button>
-                                                    <span class='quantity'>{$product['SoLuong']}</span>
-                                                    <button type='button' onclick='updateQuantity(\"{$product['MaSanPham']}\", 1)'>+</button>
-                                                  </td>";
-                                            echo "<td class='price'>{$formattedPrice}</td>";
-                                            echo "<td class='total-price'>{$formattedTotalPrice}</td>"; // Thêm cột thành tiền ở đây
-                                            echo "<td><button type='button' onclick='removeFromCart(\"{$product['MaSanPham']}\")'><i class='fas fa-times'></i></button></td>";
-                                            echo "<input type='hidden' name='maSanPham[]' value='{$product['MaSanPham']}'>";
-                                            echo "</tr>";
-                                        } else {
-                                            echo "<tr><td colspan='9'>Không xác định MaSanPham trong mảng sản phẩm.</td></tr>";
-                                        }
+                                        echo "<tr id='product-{$product['MaSanPham']}-{$product['Size']}'>";
+                                        echo "<td><input type='checkbox' name='selected_products[]' value='{$key}'></td>";
+                                        echo "<td><img src='{$product['HinhAnh']}' alt='{$product['TenSanPham']}' class='product-image'></td>";
+                                        echo "<td>{$product['TenSanPham']}</td>";
+                                        echo "<td>{$product['Size']}</td>";
+                                        echo "<td class='quantity-container'>
+                                                <button type='button' onclick='updateQuantity(\"{$key}\", -1)'>-</button>
+                                                <span class='quantity'>{$product['SoLuong']}</span>
+                                                <button type='button' onclick='updateQuantity(\"{$key}\", 1)'>+</button>
+                                              </td  >";
+                                        echo "<td class='price'>{$formattedPrice}</td>";
+                                        echo "<td class='total-price'>{$formattedTotalPrice}</td>"; // Thêm cột thành tiền ở đây
+                                        echo "<td><button type='button' onclick='removeFromCart(\"{$key}\")'><i class='fas fa-times'></i></button></td>";
+                                        echo "</tr>";
                                     }
+                                    
                                     
                                     ?>
 
